@@ -5,6 +5,10 @@
 
 #pragma once
 
+#ifdef _WINSOCKAPI_
+#undef _WINSOCKAPI_
+#endif
+
 #include <collection.h>
 #include <ppltasks.h>
 

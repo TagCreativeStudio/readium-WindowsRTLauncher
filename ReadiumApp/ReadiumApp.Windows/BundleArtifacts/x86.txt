@@ -1,2 +1,2 @@
-MainPackage=C:\Users\Sean\Documents\dev\readium\ReadiumTestApp\Debug\ReadiumTestApp.Windows\ReadiumTestApp.Windows_1.0.0.1_Bundle\ReadiumTestApp.Windows_1.0.0.1_Win32_Debug.appx
-SymbolPackage=C:\Users\Sean\Desktop\ReadiumTestApp\ReadiumTestApp.Windows_1.0.0.1_Debug_Test\ReadiumTestApp.Windows_1.0.0.1_Win32_Debug.appxsym
+MainPackage=C:\Users\Sean\Documents\dev\readium\ReadiumApp\Debug\ReadiumApp.Windows\ReadiumApp.Windows_1.0.0.2_Bundle\ReadiumApp.Windows_1.0.0.2_Win32_Debug.appx
+SymbolPackage=C:\Users\Sean\Desktop\ReadiumApp\ReadiumApp.Windows_1.0.0.2_Debug_Test\ReadiumApp.Windows_1.0.0.2_Win32_Debug.appxsym
