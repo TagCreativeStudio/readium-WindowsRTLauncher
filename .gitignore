@@ -188,4 +188,4 @@ FakesAssemblies/
 ## PROJECT-SPECIFIC STUFF
 ################################################
 
-ReadiumTestApp/ReadiumTestApp.Windows/ePub3/ThirdParty/
+ReadiumTestApp/ReadiumTestApp.Windows/ePub3/ThirdParty/boost/
