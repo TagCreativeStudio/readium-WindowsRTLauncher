@@ -9,7 +9,7 @@
 
 #include "Log.h"
 
-using namespace ReadiumTestApp;
+using namespace ReadiumApp;
 
 using namespace Platform;
 using namespace Platform::Collections;
@@ -125,7 +125,7 @@ void MainPage::SaveState(Object^ sender, Common::SaveStateEventArgs^ e){
 	(void) e; // Unused parameter
 }
 
-void ReadiumTestApp::MainPage::SelectEPubBtn_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+void ReadiumApp::MainPage::SelectEPubBtn_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	auto openPicker = ref new Windows::Storage::Pickers::FileOpenPicker();
 	openPicker->SuggestedStartLocation = Windows::Storage::Pickers::PickerLocationId::DocumentsLibrary;

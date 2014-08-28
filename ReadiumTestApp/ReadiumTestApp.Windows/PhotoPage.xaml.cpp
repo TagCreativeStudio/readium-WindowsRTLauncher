@@ -6,7 +6,7 @@
 #include "pch.h"
 #include "PhotoPage.xaml.h"
 
-using namespace ReadiumTestApp;
+using namespace ReadiumApp;
 
 using namespace Platform;
 using namespace Platform::Collections;
@@ -151,7 +151,7 @@ void PhotoPage::SaveState(Object^ sender, Common::SaveStateEventArgs^ e){
 }
 
 
-void ReadiumTestApp::PhotoPage::GetPhotoButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+void ReadiumApp::PhotoPage::GetPhotoButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	auto openPicker = ref new Windows::Storage::Pickers::FileOpenPicker();
 	openPicker->SuggestedStartLocation = Windows::Storage::Pickers::PickerLocationId::PicturesLibrary;

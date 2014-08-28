@@ -6,6 +6,7 @@
     <SharedGUID>6380d501-8646-4c2b-930b-002277095286</SharedGUID>
     <ItemsProjectGuid>{7987e10c-d0e9-4dec-a1bf-800a68fb8671}</ItemsProjectGuid>
     <ItemsRootNamespace>ReadiumTestApp</ItemsRootNamespace>
+    <ItemsProjectName>ReadiumApp.Shared</ItemsProjectName>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
@@ -25,7 +26,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClInclude Include="$(MSBuildThisFileDirectory)pch.h" />                   
+    <ClInclude Include="$(MSBuildThisFileDirectory)pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectCapability Include="SourceItemsFromImports" />

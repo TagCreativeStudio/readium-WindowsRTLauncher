@@ -5,7 +5,7 @@
 
 #pragma once
 
-namespace ReadiumTestApp
+namespace ReadiumApp
 {
 	namespace Common
 	{

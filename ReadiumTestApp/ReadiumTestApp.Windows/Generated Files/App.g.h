@@ -10,7 +10,7 @@
 
 #include "XamlTypeInfo.g.h"
 
-namespace ReadiumTestApp
+namespace ReadiumApp
 {
     partial ref class App :  public ::Windows::UI::Xaml::Application,
         public ::Windows::UI::Xaml::Markup::IXamlMetadataProvider,

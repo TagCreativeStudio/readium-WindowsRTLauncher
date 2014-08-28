@@ -7,7 +7,7 @@
 
 #include "App.g.h"
 
-namespace ReadiumTestApp
+namespace ReadiumApp
 {
 	/// <summary>
 	/// Provides application-specific behavior to supplement the default Application class.

@@ -8,7 +8,7 @@
 
 #include <algorithm>
 
-using namespace ReadiumTestApp::Common;
+using namespace ReadiumApp::Common;
 
 using namespace concurrency;
 using namespace Platform;

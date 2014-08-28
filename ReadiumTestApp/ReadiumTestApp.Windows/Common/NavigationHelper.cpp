@@ -8,7 +8,7 @@
 #include "RelayCommand.h"
 #include "SuspensionManager.h"
 
-using namespace ReadiumTestApp::Common;
+using namespace ReadiumApp::Common;
 
 using namespace Platform;
 using namespace Platform::Collections;

@@ -12,7 +12,7 @@
 
 
 
-void ::ReadiumTestApp::PhotoPage::InitializeComponent()
+void ::ReadiumApp::PhotoPage::InitializeComponent()
 {
     if (_contentLoaded)
         return;
@@ -38,13 +38,13 @@ void ::ReadiumTestApp::PhotoPage::InitializeComponent()
     pageTitle = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"pageTitle"));
 }
 
-void ::ReadiumTestApp::PhotoPage::Connect(int connectionId, Platform::Object^ target)
+void ::ReadiumApp::PhotoPage::Connect(int connectionId, Platform::Object^ target)
 {
     switch (connectionId)
     {
     case 1:
         (safe_cast<::Windows::UI::Xaml::Controls::Primitives::ButtonBase^>(target))->Click +=
-            ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ReadiumTestApp::PhotoPage::*)(Platform::Object^, Windows::UI::Xaml::RoutedEventArgs^))&PhotoPage::GetPhotoButton_Click);
+            ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ReadiumApp::PhotoPage::*)(Platform::Object^, Windows::UI::Xaml::RoutedEventArgs^))&PhotoPage::GetPhotoButton_Click);
         break;
     }
     (void)connectionId; // Unused parameter

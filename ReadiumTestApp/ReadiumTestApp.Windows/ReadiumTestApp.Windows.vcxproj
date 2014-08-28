@@ -34,6 +34,7 @@
     <AppContainerApplication>true</AppContainerApplication>
     <ApplicationType>Windows Store</ApplicationType>
     <ApplicationTypeRevision>8.1</ApplicationTypeRevision>
+    <ProjectName>ReadiumApp.Windows</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -97,6 +98,7 @@
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxPackageDir>C:\Users\Sean\Desktop\ReadiumTestApp\</AppxPackageDir>
     <AppxBundlePlatforms>x86</AppxBundlePlatforms>
+    <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(MSBuildProjectDirectory)\ePub3;$(MSBuildProjectDirectory)\ePub3\include;$(MSBuildProjectDirectory)\ePub3\ThirdParty;$(MSBuildProjectDirectory)\ePub3\utilities;$(MSBuildProjectDirectory)\ePub3\xml;$(MSBuildProjectDirectory)\ePub3\ePub;$(IncludePath)</IncludePath>

@@ -12,7 +12,7 @@
 
 
 
-void ::ReadiumTestApp::MainPage::InitializeComponent()
+void ::ReadiumApp::MainPage::InitializeComponent()
 {
     if (_contentLoaded)
         return;
@@ -32,13 +32,13 @@ void ::ReadiumTestApp::MainPage::InitializeComponent()
     pageTitle = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"pageTitle"));
 }
 
-void ::ReadiumTestApp::MainPage::Connect(int connectionId, Platform::Object^ target)
+void ::ReadiumApp::MainPage::Connect(int connectionId, Platform::Object^ target)
 {
     switch (connectionId)
     {
     case 1:
         (safe_cast<::Windows::UI::Xaml::Controls::Primitives::ButtonBase^>(target))->Click +=
-            ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ReadiumTestApp::MainPage::*)(Platform::Object^, Windows::UI::Xaml::RoutedEventArgs^))&MainPage::SelectEPubBtn_Click);
+            ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ReadiumApp::MainPage::*)(Platform::Object^, Windows::UI::Xaml::RoutedEventArgs^))&MainPage::SelectEPubBtn_Click);
         break;
     }
     (void)connectionId; // Unused parameter

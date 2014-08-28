@@ -10,7 +10,7 @@
 
 #include "EPubSdkApi.h"
 
-namespace ReadiumTestApp
+namespace ReadiumApp
 {
 	/// <summary>
 	/// A basic page that provides characteristics common to most applications.

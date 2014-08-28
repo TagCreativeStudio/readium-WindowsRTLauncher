@@ -12,7 +12,7 @@
 
 
 
-void ::ReadiumTestApp::MainPage::InitializeComponent()
+void ::ReadiumApp::MainPage::InitializeComponent()
 {
     if (_contentLoaded)
         return;
@@ -28,7 +28,7 @@ void ::ReadiumTestApp::MainPage::InitializeComponent()
     ContentRoot = safe_cast<::Windows::UI::Xaml::Controls::Grid^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"ContentRoot"));
 }
 
-void ::ReadiumTestApp::MainPage::Connect(int connectionId, Platform::Object^ target)
+void ::ReadiumApp::MainPage::Connect(int connectionId, Platform::Object^ target)
 {
     (void)connectionId; // Unused parameter
     (void)target; // Unused parameter

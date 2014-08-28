@@ -4,7 +4,7 @@
 #include <string>
 #include <sstream>
 
-namespace ReadiumTestApp
+namespace ReadiumApp
 {
 	public ref class Log sealed
 	{

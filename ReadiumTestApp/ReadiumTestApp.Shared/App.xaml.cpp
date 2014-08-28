@@ -7,7 +7,7 @@
 #include "MainPage.xaml.h"
 #include "Common\SuspensionManager.h"
 
-using namespace ReadiumTestApp;
+using namespace ReadiumApp;
 
 using namespace Platform;
 using namespace Windows::ApplicationModel;
@@ -63,7 +63,7 @@ void App::OnLaunched(LaunchActivatedEventArgs^ e)
 		// a SuspensionManager key
 		rootFrame = ref new Frame();
 
-		ReadiumTestApp::Common::SuspensionManager::RegisterFrame(rootFrame, "appFrame");
+		ReadiumApp::Common::SuspensionManager::RegisterFrame(rootFrame, "appFrame");
 
 		// TODO: Change this value to a cache size that is appropriate for your application.
 		rootFrame->CacheSize = 1;

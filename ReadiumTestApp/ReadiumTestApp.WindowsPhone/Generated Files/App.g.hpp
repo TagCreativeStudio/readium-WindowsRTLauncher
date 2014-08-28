@@ -45,7 +45,7 @@ extern "C"
 
 #endif // (defined(_M_IX86) || defined(_M_AMD64)) && !defined(_VSDESIGNER_DONT_LOAD_AS_DLL)
 
-void ::ReadiumTestApp::App::InitializeComponent()
+void ::ReadiumApp::App::InitializeComponent()
 {
 #if defined _DEBUG && !defined DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION
     UnhandledException += ref new Windows::UI::Xaml::UnhandledExceptionEventHandler(
@@ -61,7 +61,7 @@ void ::ReadiumTestApp::App::InitializeComponent()
 #endif
 }
 
-::Windows::UI::Xaml::Markup::IXamlType^ ::ReadiumTestApp::App::GetXamlType(Windows::UI::Xaml::Interop::TypeName type)
+::Windows::UI::Xaml::Markup::IXamlType^ ::ReadiumApp::App::GetXamlType(Windows::UI::Xaml::Interop::TypeName type)
 {
     if(_provider == nullptr)
     {
@@ -70,7 +70,7 @@ void ::ReadiumTestApp::App::InitializeComponent()
     return _provider->GetXamlTypeByType(type);
 }
 
-::Windows::UI::Xaml::Markup::IXamlType^ ::ReadiumTestApp::App::GetXamlType(::Platform::String^ fullName)
+::Windows::UI::Xaml::Markup::IXamlType^ ::ReadiumApp::App::GetXamlType(::Platform::String^ fullName)
 {
     if(_provider == nullptr)
     {
@@ -79,7 +79,7 @@ void ::ReadiumTestApp::App::InitializeComponent()
     return _provider->GetXamlTypeByName(fullName);
 }
 
-::Platform::Array<Windows::UI::Xaml::Markup::XmlnsDefinition>^ ::ReadiumTestApp::App::GetXmlnsDefinitions()
+::Platform::Array<Windows::UI::Xaml::Markup::XmlnsDefinition>^ ::ReadiumApp::App::GetXmlnsDefinitions()
 {
     return ref new ::Platform::Array<Windows::UI::Xaml::Markup::XmlnsDefinition>(0);
 }
@@ -91,12 +91,12 @@ int __cdecl main(::Platform::Array<::Platform::String^>^ args)
     Windows::UI::Xaml::Application::Start(ref new Windows::UI::Xaml::ApplicationInitializationCallback(
         [](Windows::UI::Xaml::ApplicationInitializationCallbackParams^ p) {
             (void)p; // Unused parameter
-            auto app = ref new ::ReadiumTestApp::App();
+            auto app = ref new ::ReadiumApp::App();
         }));
 }
 #endif
 
-void ::ReadiumTestApp::App::Connect(int connectionId, Platform::Object^ target)
+void ::ReadiumApp::App::Connect(int connectionId, Platform::Object^ target)
 {
     (void)connectionId; // Unused parameter
     (void)target; // Unused parameter

@@ -6,7 +6,7 @@
 #include "pch.h"
 #include "MainPage.xaml.h"
 
-using namespace ReadiumTestApp;
+using namespace ReadiumApp;
 
 using namespace Platform;
 using namespace Platform::Collections;

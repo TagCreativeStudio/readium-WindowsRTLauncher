@@ -7,7 +7,7 @@
 
 #include "RelayCommand.h"
 
-namespace ReadiumTestApp
+namespace ReadiumApp
 {
 	namespace Common
 	{

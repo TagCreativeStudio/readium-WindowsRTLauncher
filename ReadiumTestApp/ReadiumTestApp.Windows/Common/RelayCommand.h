@@ -14,7 +14,7 @@
 // </summary>
 
 
-namespace ReadiumTestApp
+namespace ReadiumApp
 {
 	namespace Common
 	{

@@ -84,14 +84,14 @@
         return ref new XamlSystemBaseType(typeName);
     }
 
-    if (typeName == L"ReadiumTestApp.MainPage")
+    if (typeName == L"ReadiumApp.MainPage")
     {
         ::XamlTypeInfo::InfoProvider::XamlUserType^ userType = ref new ::XamlTypeInfo::InfoProvider::XamlUserType(this, typeName, GetXamlTypeByName(L"Windows.UI.Xaml.Controls.Page"));
         userType->KindOfType = ::Windows::UI::Xaml::Interop::TypeKind::Custom;
         userType->Activator =
             []() -> Platform::Object^ 
             {
-                return ref new ::ReadiumTestApp::MainPage(); 
+                return ref new ::ReadiumApp::MainPage(); 
             };
         userType->AddMemberName(L"NavigationHelper");
         userType->AddMemberName(L"DefaultViewModel");
@@ -99,7 +99,7 @@
         return userType;
     }
 
-    if (typeName == L"ReadiumTestApp.Common.NavigationHelper")
+    if (typeName == L"ReadiumApp.Common.NavigationHelper")
     {
         ::XamlTypeInfo::InfoProvider::XamlUserType^ userType = ref new ::XamlTypeInfo::InfoProvider::XamlUserType(this, typeName, GetXamlTypeByName(L"Object"));
         userType->KindOfType = ::Windows::UI::Xaml::Interop::TypeKind::Custom;
@@ -126,14 +126,14 @@
         return userType;
     }
 
-    if (typeName == L"ReadiumTestApp.PhotoPage")
+    if (typeName == L"ReadiumApp.PhotoPage")
     {
         ::XamlTypeInfo::InfoProvider::XamlUserType^ userType = ref new ::XamlTypeInfo::InfoProvider::XamlUserType(this, typeName, GetXamlTypeByName(L"Windows.UI.Xaml.Controls.Page"));
         userType->KindOfType = ::Windows::UI::Xaml::Interop::TypeKind::Custom;
         userType->Activator =
             []() -> Platform::Object^ 
             {
-                return ref new ::ReadiumTestApp::PhotoPage(); 
+                return ref new ::ReadiumApp::PhotoPage(); 
             };
         userType->AddMemberName(L"NavigationHelper");
         userType->AddMemberName(L"DefaultViewModel");
@@ -141,7 +141,7 @@
         return userType;
     }
 
-    if (typeName == L"ReadiumTestApp.Common.RelayCommand")
+    if (typeName == L"ReadiumApp.Common.RelayCommand")
     {
         ::XamlTypeInfo::InfoProvider::XamlUserType^ userType = ref new ::XamlTypeInfo::InfoProvider::XamlUserType(this, typeName, GetXamlTypeByName(L"Object"));
         userType->KindOfType = ::Windows::UI::Xaml::Interop::TypeKind::Custom;
@@ -155,13 +155,13 @@
 
 ::Windows::UI::Xaml::Markup::IXamlMember^ ::XamlTypeInfo::InfoProvider::XamlTypeInfoProvider::CreateXamlMember(::Platform::String^ longMemberName)
 {
-    if (longMemberName == L"ReadiumTestApp.MainPage.NavigationHelper")
+    if (longMemberName == L"ReadiumApp.MainPage.NavigationHelper")
     {
-        ::XamlTypeInfo::InfoProvider::XamlMember^ xamlMember = ref new ::XamlTypeInfo::InfoProvider::XamlMember(this, L"NavigationHelper", L"ReadiumTestApp.Common.NavigationHelper");
+        ::XamlTypeInfo::InfoProvider::XamlMember^ xamlMember = ref new ::XamlTypeInfo::InfoProvider::XamlMember(this, L"NavigationHelper", L"ReadiumApp.Common.NavigationHelper");
         xamlMember->Getter =
             [](Object^ instance) -> Object^
             {
-                auto that = (::ReadiumTestApp::MainPage^)instance;
+                auto that = (::ReadiumApp::MainPage^)instance;
                 return that->NavigationHelper;
             };
 
@@ -169,13 +169,13 @@
         return xamlMember;
     }
 
-    if (longMemberName == L"ReadiumTestApp.MainPage.DefaultViewModel")
+    if (longMemberName == L"ReadiumApp.MainPage.DefaultViewModel")
     {
         ::XamlTypeInfo::InfoProvider::XamlMember^ xamlMember = ref new ::XamlTypeInfo::InfoProvider::XamlMember(this, L"DefaultViewModel", L"Windows.Foundation.Collections.IObservableMap`2<String, Object>");
         xamlMember->Getter =
             [](Object^ instance) -> Object^
             {
-                auto that = (::ReadiumTestApp::MainPage^)instance;
+                auto that = (::ReadiumApp::MainPage^)instance;
                 return that->DefaultViewModel;
             };
 
@@ -183,13 +183,13 @@
         return xamlMember;
     }
 
-    if (longMemberName == L"ReadiumTestApp.PhotoPage.NavigationHelper")
+    if (longMemberName == L"ReadiumApp.PhotoPage.NavigationHelper")
     {
-        ::XamlTypeInfo::InfoProvider::XamlMember^ xamlMember = ref new ::XamlTypeInfo::InfoProvider::XamlMember(this, L"NavigationHelper", L"ReadiumTestApp.Common.NavigationHelper");
+        ::XamlTypeInfo::InfoProvider::XamlMember^ xamlMember = ref new ::XamlTypeInfo::InfoProvider::XamlMember(this, L"NavigationHelper", L"ReadiumApp.Common.NavigationHelper");
         xamlMember->Getter =
             [](Object^ instance) -> Object^
             {
-                auto that = (::ReadiumTestApp::PhotoPage^)instance;
+                auto that = (::ReadiumApp::PhotoPage^)instance;
                 return that->NavigationHelper;
             };
 
@@ -197,13 +197,13 @@
         return xamlMember;
     }
 
-    if (longMemberName == L"ReadiumTestApp.PhotoPage.DefaultViewModel")
+    if (longMemberName == L"ReadiumApp.PhotoPage.DefaultViewModel")
     {
         ::XamlTypeInfo::InfoProvider::XamlMember^ xamlMember = ref new ::XamlTypeInfo::InfoProvider::XamlMember(this, L"DefaultViewModel", L"Windows.Foundation.Collections.IObservableMap`2<String, Object>");
         xamlMember->Getter =
             [](Object^ instance) -> Object^
             {
-                auto that = (::ReadiumTestApp::PhotoPage^)instance;
+                auto that = (::ReadiumApp::PhotoPage^)instance;
                 return that->DefaultViewModel;
             };
 
@@ -211,13 +211,13 @@
         return xamlMember;
     }
 
-    if (longMemberName == L"ReadiumTestApp.Common.NavigationHelper.GoForwardCommand")
+    if (longMemberName == L"ReadiumApp.Common.NavigationHelper.GoForwardCommand")
     {
-        ::XamlTypeInfo::InfoProvider::XamlMember^ xamlMember = ref new ::XamlTypeInfo::InfoProvider::XamlMember(this, L"GoForwardCommand", L"ReadiumTestApp.Common.RelayCommand");
+        ::XamlTypeInfo::InfoProvider::XamlMember^ xamlMember = ref new ::XamlTypeInfo::InfoProvider::XamlMember(this, L"GoForwardCommand", L"ReadiumApp.Common.RelayCommand");
         xamlMember->Getter =
             [](Object^ instance) -> Object^
             {
-                auto that = (::ReadiumTestApp::Common::NavigationHelper^)instance;
+                auto that = (::ReadiumApp::Common::NavigationHelper^)instance;
                 return that->GoForwardCommand;
             };
 
@@ -225,13 +225,13 @@
         return xamlMember;
     }
 
-    if (longMemberName == L"ReadiumTestApp.Common.NavigationHelper.GoBackCommand")
+    if (longMemberName == L"ReadiumApp.Common.NavigationHelper.GoBackCommand")
     {
-        ::XamlTypeInfo::InfoProvider::XamlMember^ xamlMember = ref new ::XamlTypeInfo::InfoProvider::XamlMember(this, L"GoBackCommand", L"ReadiumTestApp.Common.RelayCommand");
+        ::XamlTypeInfo::InfoProvider::XamlMember^ xamlMember = ref new ::XamlTypeInfo::InfoProvider::XamlMember(this, L"GoBackCommand", L"ReadiumApp.Common.RelayCommand");
         xamlMember->Getter =
             [](Object^ instance) -> Object^
             {
-                auto that = (::ReadiumTestApp::Common::NavigationHelper^)instance;
+                auto that = (::ReadiumApp::Common::NavigationHelper^)instance;
                 return that->GoBackCommand;
             };
 

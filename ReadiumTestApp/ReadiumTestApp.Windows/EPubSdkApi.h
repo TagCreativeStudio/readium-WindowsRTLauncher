@@ -12,7 +12,7 @@
 #include "container.h"
 
 
-namespace ReadiumTestApp
+namespace ReadiumApp
 {
 	public ref class EPubSdkApi sealed
 	{

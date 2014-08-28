@@ -22,7 +22,7 @@ namespace Windows {
     }
 }
 
-namespace ReadiumTestApp
+namespace ReadiumApp
 {
     partial ref class PhotoPage : public ::Windows::UI::Xaml::Controls::Page, 
         public ::Windows::UI::Xaml::Markup::IComponentConnector

@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "EPubSdkApi.h"
 
-using namespace ReadiumTestApp;
+using namespace ReadiumApp;
 
 ePub3::PackagePtr pkg;
 

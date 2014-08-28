@@ -8,7 +8,7 @@
   <mp:PhoneIdentity PhoneProductId="7c4e3c07-3dae-446c-8621-6b18f337a733" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>ReadiumTestApp.WindowsPhone</DisplayName>
+    <DisplayName>ReadiumApp.WindowsPhone</DisplayName>
     <PublisherDisplayName>Sean</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -25,12 +25,12 @@
   <Applications>
     <Application Id="App"
         Executable="$targetnametoken$.exe"
-        EntryPoint="ReadiumTestApp_WindowsPhone.App">
+        EntryPoint="ReadiumApp_WindowsPhone.App">
         <m3:VisualElements
-            DisplayName="ReadiumTestApp.WindowsPhone"
+            DisplayName="ReadiumApp.WindowsPhone"
             Square150x150Logo="Assets\Logo.png"
             Square44x44Logo="Assets\SmallLogo.png"
-            Description="ReadiumTestApp.WindowsPhone"
+            Description="ReadiumApp.WindowsPhone"
             ForegroundText="light"
             BackgroundColor="transparent">
             <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png"/>
