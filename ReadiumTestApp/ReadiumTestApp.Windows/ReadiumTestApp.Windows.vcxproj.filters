@@ -8,6 +8,12 @@
     <Filter Include="Common">
       <UniqueIdentifier>{e23ea6a9-421c-49de-a9f9-3220121c4a12}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{dafac131-c01b-42ee-ba0e-5f66e977e8b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API">
+      <UniqueIdentifier>{f057a5c9-3cd6-41a2-bbfb-05d728796371}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainPage.xaml.cpp" />
@@ -21,6 +27,9 @@
       <Filter>Common</Filter>
     </ClCompile>
     <ClCompile Include="PhotoPage.xaml.cpp" />
+    <ClCompile Include="EPubSdkApi.cpp">
+      <Filter>API</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainPage.xaml.h" />
@@ -34,6 +43,12 @@
       <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="PhotoPage.xaml.h" />
+    <ClInclude Include="Log.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="EPubSdkApi.h">
+      <Filter>API</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />

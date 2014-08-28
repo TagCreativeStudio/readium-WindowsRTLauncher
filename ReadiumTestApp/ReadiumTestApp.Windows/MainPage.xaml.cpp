@@ -7,6 +7,8 @@
 #include "MainPage.xaml.h"
 #include "PhotoPage.xaml.h"
 
+#include "Log.h"
+
 using namespace ReadiumTestApp;
 
 using namespace Platform;
@@ -25,10 +27,10 @@ using namespace Windows::UI::Xaml::Navigation;
 using namespace concurrency;
 
 #include "ePub3/ePub/initialization.h"
-//#include "ePub3/ePub/archive.h"
-//#include "ePub3/xml/utilities/io.h"
-//#include "ePub3/ePub/filter_manager_impl.h"
-//#include "ePub3/ePub/media-overlays_smil_model.h"
+#include "ePub3/ePub/archive.h"
+#include "ePub3/xml/utilities/io.h"
+#include "ePub3/ePub/filter_manager_impl.h"
+#include "ePub3/ePub/media-overlays_smil_model.h"
 using namespace ePub3;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
@@ -137,7 +139,36 @@ void ReadiumTestApp::MainPage::SelectEPubBtn_Click(Platform::Object^ sender, Win
 	{
 		if (file != nullptr)
 		{
+			auto folder = Windows::Storage::ApplicationData::Current->TemporaryFolder;
+			auto opt = Windows::Storage::NameCollisionOption::ReplaceExisting;
+			mruToken = Windows::Storage::AccessCache::StorageApplicationPermissions::MostRecentlyUsedList->Add(file);
+			create_task(file->CopyAsync(folder, file->Name, opt))
+				.then([this](Windows::Storage::StorageFile^ copiedFile)
+			{
+				Log::Debug(copiedFile->Path);
+				api->openFile(copiedFile->Path);
+			});
+			/*create_task(file->OpenAsync(Windows::Storage::FileAccessMode::Read))
+				.then([this, file](Windows::Storage::Streams::IRandomAccessStream^ fs)
+			{
 
+			})*/
+			//create_task([this, file]()
+			//{
+			//	//return file->OpenAsync(Windows::Storage::FileAccessMode::Read);
+			//	/*Log::Debug(file->Path);
+			//	EPubSdkApi^ api;
+			//	api->openFile(file->Path);
+			//	mruToken = Windows::Storage::AccessCache::StorageApplicationPermissions::MostRecentlyUsedList->Add(file);*/
+			//})
+			//	.then([this, file](Windows::Storage::Streams::IRandomAccessStream^ fileStream)
+			//{
+			//	
+			//})
+			//	.then([this, file]()
+			//{
+			//	mruToken = Windows::Storage::AccessCache::StorageApplicationPermissions::MostRecentlyUsedList->Add(file);
+			//});
 		}
 	});
 }

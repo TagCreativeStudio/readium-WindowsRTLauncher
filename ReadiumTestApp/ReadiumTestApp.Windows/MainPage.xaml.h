@@ -8,6 +8,8 @@
 #include "MainPage.g.h"
 #include "Common\NavigationHelper.h"
 
+#include "EPubSdkApi.h"
+
 namespace ReadiumTestApp
 {
 	/// <summary>
@@ -47,5 +49,8 @@ namespace ReadiumTestApp
 		static Windows::UI::Xaml::DependencyProperty^ _defaultViewModelProperty;
 		static Windows::UI::Xaml::DependencyProperty^ _navigationHelperProperty;
 		void SelectEPubBtn_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+
+		Platform::String^ mruToken;
+		EPubSdkApi^ api;
 	};
 }
