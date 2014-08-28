@@ -54,7 +54,7 @@
     <AppxManifest Include="Package.appxmanifest" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ReadiumTestApp.Windows_TemporaryKey.pfx" />
+    <None Include="ReadiumApp.Windows_TemporaryKey.pfx" />
     <None Include="ePub3.dll" />
   </ItemGroup>
   <ItemGroup>

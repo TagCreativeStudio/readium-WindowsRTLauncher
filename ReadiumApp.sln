@@ -5,17 +5,17 @@ VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReadiumApp", "ReadiumApp", "{BCD9357C-C957-407D-B9F0-C529B034B7D3}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReadiumApp.Shared", "ReadiumTestApp\ReadiumTestApp.Shared\ReadiumTestApp.Shared.vcxitems", "{7987E10C-D0E9-4DEC-A1BF-800A68FB8671}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReadiumApp.Shared", "ReadiumApp\ReadiumApp.Shared\ReadiumApp.Shared.vcxitems", "{7987E10C-D0E9-4DEC-A1BF-800A68FB8671}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReadiumApp.Windows", "ReadiumTestApp\ReadiumTestApp.Windows\ReadiumTestApp.Windows.vcxproj", "{79338BCE-C490-4002-A39A-1558BC5A8A03}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReadiumApp.Windows", "ReadiumApp\ReadiumApp.Windows\ReadiumApp.Windows.vcxproj", "{79338BCE-C490-4002-A39A-1558BC5A8A03}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReadiumApp.WindowsPhone", "ReadiumTestApp\ReadiumTestApp.WindowsPhone\ReadiumTestApp.WindowsPhone.vcxproj", "{4E3BDDD8-0510-40DC-B692-7FFF5243E3E5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReadiumApp.WindowsPhone", "ReadiumApp\ReadiumApp.WindowsPhone\ReadiumApp.WindowsPhone.vcxproj", "{4E3BDDD8-0510-40DC-B692-7FFF5243E3E5}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		ReadiumTestApp\ReadiumTestApp.Shared\ReadiumTestApp.Shared.vcxitems*{79338bce-c490-4002-a39a-1558bc5a8a03}*SharedItemsImports = 4
-		ReadiumTestApp\ReadiumTestApp.Shared\ReadiumTestApp.Shared.vcxitems*{7987e10c-d0e9-4dec-a1bf-800a68fb8671}*SharedItemsImports = 9
-		ReadiumTestApp\ReadiumTestApp.Shared\ReadiumTestApp.Shared.vcxitems*{4e3bddd8-0510-40dc-b692-7fff5243e3e5}*SharedItemsImports = 4
+		ReadiumApp\ReadiumApp.Shared\ReadiumApp.Shared.vcxitems*{79338bce-c490-4002-a39a-1558bc5a8a03}*SharedItemsImports = 4
+		ReadiumApp\ReadiumApp.Shared\ReadiumApp.Shared.vcxitems*{7987e10c-d0e9-4dec-a1bf-800a68fb8671}*SharedItemsImports = 9
+		ReadiumApp\ReadiumApp.Shared\ReadiumApp.Shared.vcxitems*{4e3bddd8-0510-40dc-b692-7fff5243e3e5}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
