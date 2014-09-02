@@ -51,7 +51,7 @@ namespace ReadiumApp
 		void SelectEPubBtn_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 
 		Platform::String^ mruToken;
-		EPubSdkApi^ api;
+		EPubSdkApi api;
 		Readium::Initialization init;
 	};
 }

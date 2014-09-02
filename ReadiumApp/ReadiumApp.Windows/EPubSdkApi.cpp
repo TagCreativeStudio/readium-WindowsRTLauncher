@@ -17,14 +17,14 @@ void EPubSdkApi::readPackages()
 
 void EPubSdkApi::openFile(Windows::Storage::IStorageFile^ file)
 {
-	Readium::Container^ container = Readium::Container::OpenContainer(file);
+	container = Readium::Container::OpenContainer(file);
 	if (!container)
 	{
 		Log::Debug("[EPubSdkApi] Unable to open container.");
 		return;
 	}
 
-	Windows::Foundation::Collections::IVectorView<Readium::Package^>^ packages = container->Packages();
+	 packages = container->Packages();
 	if (!packages)
 	{
 		Log::Debug("[EPubSdkApi] Could not retrieve pacakages from container.");
@@ -38,6 +38,6 @@ void EPubSdkApi::openFile(Windows::Storage::IStorageFile^ file)
 	}
 	else
 	{
-		Readium::Package^ currentPackage = packages->GetAt(0);
+		currentPackage = packages->GetAt(0);
 	}
 }

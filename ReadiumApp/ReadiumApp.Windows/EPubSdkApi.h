@@ -25,9 +25,9 @@ namespace ReadiumApp
 
 	private:
 
-//		Readium::Container^ container;
-//		Windows::Foundation::Collections::IVectorView<Readium::Package^>^ packages;
-//		Readium::Package^ currentPackage;
+		Readium::Container^ container;
+		Windows::Foundation::Collections::IVectorView<Readium::Package^>^ packages;
+		Readium::Package^ currentPackage;
 
 	};
 }

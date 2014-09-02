@@ -147,7 +147,7 @@ void ReadiumApp::MainPage::SelectEPubBtn_Click(Platform::Object^ sender, Windows
 				.then([this](Windows::Storage::StorageFile^ copiedFile)
 			{
 				Log::Debug(copiedFile->Path);
-				api->openFile(copiedFile);
+				api.openFile(copiedFile);
 			});
 		}
 	});
