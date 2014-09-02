@@ -22,8 +22,13 @@ namespace ReadiumApp
 		void readPackages();
 
 		void openFile(Windows::Storage::IStorageFile^ file);
-		void openFile(Platform::String^ path);
-		
+
+	private:
+
+//		Readium::Container^ container;
+//		Windows::Foundation::Collections::IVectorView<Readium::Package^>^ packages;
+//		Readium::Package^ currentPackage;
+
 	};
 }
 
