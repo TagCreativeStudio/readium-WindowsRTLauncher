@@ -2,6 +2,7 @@
 #include "EPubSdkApi.h"
 
 using namespace ReadiumApp;
+using namespace Readium;
 
 ePub3::PackagePtr pkg;
 
@@ -14,29 +15,15 @@ void EPubSdkApi::readPackages()
 
 }
 
-void EPubSdkApi::openFile(Platform::String^ path)
+void EPubSdkApi::openFile(Windows::Storage::IStorageFile^ file)
 {
-	std::wstring wpath(path->Data());
-	openFile(wpath);
+	Readium::Container::OpenContainer(file);
+	/*std::wstring wpath(path->Data());
+	openFile(wpath);*/
 }
 
-void EPubSdkApi::openFile(std::wstring &path)
+void EPubSdkApi::openFile(Platform::String^ path)
 {
-	ePub3::ContainerPtr cont = ePub3::Container::OpenContainer(path);
-	if (cont)
-	{
-		Log::Debug("[API] Document has container");
-		pkg = cont->DefaultPackage();
-
-		if (pkg == 0)
-		{
-			auto pkgs = cont->Packages();
-			if (pkgs.size() <= 0)
-			{
-				Log::Debug("[API] No packages in document!");
-				return;
-			}
-			pkg = pkgs[0];
-		}
-	}
+	Log::Debug(path);
+	Readium::Container::OpenContainer(path);
 }

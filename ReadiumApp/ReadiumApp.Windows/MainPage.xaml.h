@@ -52,5 +52,6 @@ namespace ReadiumApp
 
 		Platform::String^ mruToken;
 		EPubSdkApi^ api;
+		Readium::Initialization init;
 	};
 }

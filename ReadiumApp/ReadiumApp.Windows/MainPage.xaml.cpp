@@ -109,7 +109,8 @@ void MainPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 	(void) sender;	// Unused parameter
 	(void) e;
 
-	ePub3::InitializeSdk();
+	//ePub3::InitializeSdk();
+	init.InitializeSdk();
 }
 
 /// <summary>
@@ -133,42 +134,50 @@ void ReadiumApp::MainPage::SelectEPubBtn_Click(Platform::Object^ sender, Windows
 
 	openPicker->FileTypeFilter->Clear();
 	openPicker->FileTypeFilter->Append(".epub");
+	/*openPicker->FileTypeFilter->Append(".jpg");
+	openPicker->FileTypeFilter->Append(".png");*/
 
 	create_task(openPicker->PickSingleFileAsync())
 		.then([this](Windows::Storage::StorageFile^ file)
 	{
 		if (file != nullptr)
 		{
-			auto folder = Windows::Storage::ApplicationData::Current->TemporaryFolder;
+			create_task([file]()
+			{
+				Log::Debug(file->Name);
+				Log::Debug(file->Path);
+				return file->OpenAsync(Windows::Storage::FileAccessMode::Read);
+			})
+				.then([this, file](Windows::Storage::Streams::IRandomAccessStream^ fileStream)
+			{
+				this->api->openFile(file->Path);
+				/*Windows::UI::Xaml::Media::Imaging::BitmapImage^ bmp = ref new Windows::UI::Xaml::Media::Imaging::BitmapImage();
+				bmp->SetSource(fileStream);
+				displayImage->Source = bmp;
+				this->DataContext = file;*/
+			})
+				.then([this, file]()
+			{
+				mruToken = Windows::Storage::AccessCache::StorageApplicationPermissions::MostRecentlyUsedList->Add(file);
+			});
+
+
+			/*auto folder = Windows::Storage::ApplicationData::Current->TemporaryFolder;
 			auto opt = Windows::Storage::NameCollisionOption::ReplaceExisting;
-			mruToken = Windows::Storage::AccessCache::StorageApplicationPermissions::MostRecentlyUsedList->Add(file);
-			create_task(file->CopyAsync(folder, file->Name, opt))
+			mruToken = Windows::Storage::AccessCache::StorageApplicationPermissions::MostRecentlyUsedList->Add(file);*/
+			/*api->openFile(file);*/
+			/*create_task(file->CopyAsync(folder, file->Name, opt))
 				.then([this](Windows::Storage::StorageFile^ copiedFile)
 			{
 				Log::Debug(copiedFile->Path);
-				api->openFile(copiedFile->Path);
-			});
+				api->openFile(copiedFile);
+			});*/
 			/*create_task(file->OpenAsync(Windows::Storage::FileAccessMode::Read))
 				.then([this, file](Windows::Storage::Streams::IRandomAccessStream^ fs)
 			{
 
 			})*/
-			//create_task([this, file]()
-			//{
-			//	//return file->OpenAsync(Windows::Storage::FileAccessMode::Read);
-			//	/*Log::Debug(file->Path);
-			//	EPubSdkApi^ api;
-			//	api->openFile(file->Path);
-			//	mruToken = Windows::Storage::AccessCache::StorageApplicationPermissions::MostRecentlyUsedList->Add(file);*/
-			//})
-			//	.then([this, file](Windows::Storage::Streams::IRandomAccessStream^ fileStream)
-			//{
-			//	
-			//})
-			//	.then([this, file]()
-			//{
-			//	mruToken = Windows::Storage::AccessCache::StorageApplicationPermissions::MostRecentlyUsedList->Add(file);
-			//});
+			
 		}
 	});
 }

@@ -149,9 +149,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="ePub3.dll">
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
-    </None>
     <None Include="ReadiumApp.Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -194,9 +191,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="ePub3.lib">
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
-    </Library>
+    <Reference Include="Readium">
+      <HintPath>Readium.winmd</HintPath>
+      <IsWinMDFile>true</IsWinMDFile>
+    </Reference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
