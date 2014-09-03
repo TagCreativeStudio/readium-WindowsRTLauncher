@@ -4,8 +4,6 @@
 using namespace ReadiumApp;
 using namespace Readium;
 
-ePub3::PackagePtr pkg;
-
 EPubSdkApi::EPubSdkApi()
 {
 }

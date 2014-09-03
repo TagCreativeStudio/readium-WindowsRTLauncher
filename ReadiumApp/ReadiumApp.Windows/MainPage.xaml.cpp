@@ -26,13 +26,6 @@ using namespace Windows::UI::Xaml::Navigation;
 
 using namespace concurrency;
 
-#include "ePub3/ePub/initialization.h"
-#include "ePub3/ePub/archive.h"
-#include "ePub3/xml/utilities/io.h"
-#include "ePub3/ePub/filter_manager_impl.h"
-#include "ePub3/ePub/media-overlays_smil_model.h"
-using namespace ePub3;
-
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
 MainPage::MainPage()

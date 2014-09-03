@@ -8,10 +8,6 @@
 // Project Includes
 #include "Log.h"
 
-// Library Includes
-#include "container.h"
-
-
 namespace ReadiumApp
 {
 	public ref class EPubSdkApi sealed
