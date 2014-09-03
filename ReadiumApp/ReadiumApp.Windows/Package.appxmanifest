@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="80d9f907-7942-4d1b-b92a-39c0f3fb2407" Publisher="CN=Sean" Version="1.0.0.10" />
+  <Identity Name="80d9f907-7942-4d1b-b92a-39c0f3fb2407" Publisher="CN=Sean" Version="1.0.0.18" />
   <Properties>
     <DisplayName>ReadiumApp.Windows</DisplayName>
     <PublisherDisplayName>Sean</PublisherDisplayName>

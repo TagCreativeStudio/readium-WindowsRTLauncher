@@ -131,6 +131,7 @@
     <ClCompile>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
+      <AdditionalIncludeDirectories>$(VCInstallDir)vcpackages;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -192,7 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Readium">
-      <HintPath>Readium\Win32\Release\Readium.winmd</HintPath>
+      <HintPath>Readium\Win32\Debug\Readium.winmd</HintPath>
       <IsWinMDFile>true</IsWinMDFile>
     </Reference>
   </ItemGroup>
