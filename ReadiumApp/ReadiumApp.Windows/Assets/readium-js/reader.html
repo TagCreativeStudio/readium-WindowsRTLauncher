@@ -55,6 +55,8 @@
 
                 ReadiumSDK.reader = new ReadiumSDK.Views.ReaderView({el:"#viewport"});
                 ReadiumSDK.trigger(ReadiumSDK.Events.READER_INITIALIZED);
+
+                $('#viewport').css('width', '100px').css('height', '100px').css('background-color', 'pink');
             });
 
 
@@ -63,7 +65,7 @@
         <link rel="stylesheet" type="text/css" href="static/sdk.css" />
     </head>
     <body>
-        <h1 style="color:white;">Hello There</h1>
+        <h1 style="color:#ffcc00;">Hello There</h1>
         <div id="viewport"></div>
      </body>
 </html>

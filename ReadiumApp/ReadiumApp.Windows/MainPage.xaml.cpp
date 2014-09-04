@@ -102,9 +102,8 @@ void MainPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 	(void) sender;	// Unused parameter
 	(void) e;
 
-	//ePub3::InitializeSdk();
 	init.InitializeSdk();
-	Windows::Foundation::Uri^ url = ref new Windows::Foundation::Uri("ms-appx:///Assets/readium-js/reader.html");
+	Windows::Foundation::Uri^ url = ref new Windows::Foundation::Uri("ms-appx-web:///Assets/readium-js/reader.html");
 	reader->Navigate(url);
 }
 
@@ -149,13 +148,8 @@ void ReadiumApp::MainPage::SelectEPubBtn_Click(Platform::Object^ sender, Windows
 }
 
 
-void ReadiumApp::MainPage::reader_NavigationFailed(Platform::Object^ sender, Windows::UI::Xaml::Controls::WebViewNavigationFailedEventArgs^ e)
-{
-	Log::Debug("[MainPage] NAVIGATION FAILED!");
-}
-
-
 void ReadiumApp::MainPage::reader_NavigationCompleted(Windows::UI::Xaml::Controls::WebView^ sender, Windows::UI::Xaml::Controls::WebViewNavigationCompletedEventArgs^ args)
 {
 	Log::Debug("[MainPage] NAVIGATION COMPLETED!");
+	Log::Debug("[MainPage] Status " + args->WebErrorStatus.ToString());
 }

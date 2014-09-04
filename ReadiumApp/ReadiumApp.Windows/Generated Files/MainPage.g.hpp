@@ -41,8 +41,6 @@ void ::ReadiumApp::MainPage::Connect(int connectionId, Platform::Object^ target)
             ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ReadiumApp::MainPage::*)(Platform::Object^, Windows::UI::Xaml::RoutedEventArgs^))&MainPage::SelectEPubBtn_Click);
         break;
     case 2:
-        (safe_cast<::Windows::UI::Xaml::Controls::WebView^>(target))->NavigationFailed +=
-            ref new ::Windows::UI::Xaml::Controls::WebViewNavigationFailedEventHandler(this, (void (::ReadiumApp::MainPage::*)(Platform::Object^, Windows::UI::Xaml::Controls::WebViewNavigationFailedEventArgs^))&MainPage::reader_NavigationFailed);
         (safe_cast<::Windows::UI::Xaml::Controls::WebView^>(target))->NavigationCompleted +=
             ref new ::Windows::Foundation::TypedEventHandler<::Windows::UI::Xaml::Controls::WebView^, ::Windows::UI::Xaml::Controls::WebViewNavigationCompletedEventArgs^>(this, (void (::ReadiumApp::MainPage::*)(Windows::UI::Xaml::Controls::WebView^, Windows::UI::Xaml::Controls::WebViewNavigationCompletedEventArgs^))&MainPage::reader_NavigationCompleted);
         break;

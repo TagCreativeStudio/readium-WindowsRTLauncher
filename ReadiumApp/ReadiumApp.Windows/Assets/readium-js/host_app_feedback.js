@@ -29,7 +29,9 @@ ReadiumSDK.HostAppFeedback = function() {
         ReadiumSDK.reader.on(ReadiumSDK.Events.MEDIA_OVERLAY_TTS_SPEAK, this.onMediaOverlayTTSSpeak, this);
         ReadiumSDK.reader.on(ReadiumSDK.Events.MEDIA_OVERLAY_TTS_STOP, this.onMediaOverlayTTSStop, this);
 
-        window.LauncherUI.onReaderInitialized();
+        if (window.LauncherUI) {
+            window.LauncherUI.onReaderInitialized();
+        }
 
     }, this);
 
