@@ -150,6 +150,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="Assets\readium-js\reader.html" />
     <None Include="ReadiumApp.Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

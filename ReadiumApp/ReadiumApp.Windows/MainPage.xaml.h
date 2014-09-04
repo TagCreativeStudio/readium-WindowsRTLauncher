@@ -53,5 +53,7 @@ namespace ReadiumApp
 		Platform::String^ mruToken;
 		EPubSdkApi api;
 		Readium::Initialization init;
+		void reader_NavigationFailed(Platform::Object^ sender, Windows::UI::Xaml::Controls::WebViewNavigationFailedEventArgs^ e);
+		void reader_NavigationCompleted(Windows::UI::Xaml::Controls::WebView^ sender, Windows::UI::Xaml::Controls::WebViewNavigationCompletedEventArgs^ args);
 	};
 }

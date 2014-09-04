@@ -14,6 +14,9 @@
     <Filter Include="API">
       <UniqueIdentifier>{f057a5c9-3cd6-41a2-bbfb-05d728796371}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HTTP">
+      <UniqueIdentifier>{589ad3e6-44d0-4b73-a071-8d3b6506e703}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainPage.xaml.cpp" />
@@ -55,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadiumApp.Windows_TemporaryKey.pfx" />
+    <None Include="Assets\readium-js\reader.html" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Logo.scale-100.png">
