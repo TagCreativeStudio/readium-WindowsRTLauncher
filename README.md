@@ -7,6 +7,7 @@ This is a Windows Store test app that exists to determine if/how we can get Read
 - [Dependencies](#dependencies)
 - [Linking to the Readium SDK](#linking-to-the-readium-sdk)
 - [Passing Cert](#passing-cert)
+- [Copying Readium Web Content](#copying-readium-web-content)
 
 ## Dependencies
 
@@ -29,3 +30,6 @@ All Windows Store apps must pass all the tests in the Windows App Cert Kit v3.4 
 
 Only the Release build of the app will pass cert as Debug builds are not allowed on the Store.
 
+## Copying Readium Web Content
+
+In the `Assets` folder of the Windows project there is a sub-folder called `readium-js` that is required to load web content. Currently this folder is not part of the project (and I'm unable to add it for some reason or another) and must be manually copied to the output folder which is in the root of the repo and called `Debug` or `Release` depending on how you're building.
