@@ -126,6 +126,16 @@
       <AdditionalDependencies>libxml2_a.lib;zlib.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(MSBuildProjectDirectory)\Prebuilt\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>echo $(SolutionDir)$(Configuration)\$(MSBuildProjectName)\AppX\Assets
+echo $(MSBuildProjectDirectory)\Assets\readium-js
+
+set src=$(MSBuildProjectDirectory)\Assets\readium-js
+set dst=$(SolutionDir)$(Configuration)\$(MSBuildProjectName)\AppX\Assets\readium-js
+
+if not exist %dst% md %dst%
+xcopy /s /y  %src% %dst%</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
