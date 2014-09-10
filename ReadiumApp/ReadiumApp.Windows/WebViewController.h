@@ -1,6 +1,9 @@
 #ifndef WEBVIEWCONTROLLER_H
 #define WEBVIEWCONTROLLER_H
 
+#include "EPubOpenPageRequest.h"
+#include "EPubViewerSettings.h"
+
 namespace ReadiumApp
 {
 	public ref class WebViewController sealed
@@ -9,6 +12,7 @@ namespace ReadiumApp
 		WebViewController(Windows::UI::Xaml::Controls::WebView^ view);
 
 		void openPackage(Readium::Package^ package);
+		void openBook(Readium::Package^ bookPackage);// , EPubViewerSettings^ viewerSettings, EPubOpenPageRequest^ req);
 
 	private:
 

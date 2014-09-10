@@ -44,6 +44,17 @@ Readium::Package^ EPubSdkApi::openFile(Windows::Storage::IStorageFile^ file)
 	return currentPackage;
 }
 
+Windows::Data::Json::JsonObject^ EPubSdkApi::openBook(Readium::Package^ bookPackage, EPubViewerSettings^ viewerSettings, EPubOpenPageRequest^ req)
+{
+	JsonObject^ json = ref new JsonObject();
+
+	json->Insert("package", packageToJson(bookPackage));
+	json->Insert("settings", viewerSettings->toJson());
+	json->Insert("openPageRequest", req->toJson());
+
+	return json;
+}
+
 Windows::Data::Json::JsonObject^ EPubSdkApi::packageToJson(Readium::Package^ package)
 {
 	JsonObject^ json = ref new JsonObject();
@@ -77,6 +88,7 @@ Windows::Data::Json::JsonObject^ EPubSdkApi::packageToJson(Readium::Package^ pac
 		currItem->Insert("rendition_spread", JsonValue::CreateStringValue(""));
 		currItem->Insert("rendition_flow", JsonValue::CreateStringValue(""));
 		currItem->Insert("media_overlay_id", JsonValue::CreateStringValue(""));
+		currItem->Insert("media_type", JsonValue::CreateStringValue(manifestItem->MediaOverlayID));
 
 		spineItems->Append(currItem);
 
@@ -85,6 +97,7 @@ Windows::Data::Json::JsonObject^ EPubSdkApi::packageToJson(Readium::Package^ pac
 
 	spine->Insert("items", spineItems);
 	spine->Insert("direction", JsonValue::CreateStringValue("default"));
+	json->Insert("spine", spine);
 
 	JsonObject^ mediaOverlay = ref new JsonObject();
 

@@ -146,7 +146,7 @@ void ReadiumApp::MainPage::SelectEPubBtn_Click(Platform::Object^ sender, Windows
 				Log::Debug(copiedFile->Path);
 				Readium::Package^ package = api.openFile(copiedFile);
 				WebViewController^ controller = ref new WebViewController(reader);
-				controller->openPackage(package);
+				controller->openBook(package);
 			});
 		}
 	});

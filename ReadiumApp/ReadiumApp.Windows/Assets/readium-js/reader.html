@@ -51,8 +51,10 @@
         <script type="text/javascript">
 
             function ReadiumOpenBook(bookData) {
-                ReadiumSDK.reader.openBook(bookData);
+                ReadiumSDK.reader.openBook(JSON.parse(bookData));
                 window.external.notify('yo!');
+                //$('#test').html(bookData);
+                //$('#test').html("hello");
             }
 
             $(document).ready(function () {
@@ -61,14 +63,31 @@
                 ReadiumSDK.reader = new ReadiumSDK.Views.ReaderView({el:"#viewport"});
                 ReadiumSDK.trigger(ReadiumSDK.Events.READER_INITIALIZED);
 
+                $('#test').css('background', 'pink').css('width', '100%').css('height', '90%');
+                $('#btn').on('click', onBtnClick);
+
             });
 
+            var visible = true;
+            function onBtnClick(e) {
+                window.external.notify('toggle!');
+                if (visible === true) {
+                    $('#test').css('display', 'none');
+                    $('#viewport').css('background', 'green');
+                } else {
+                    $('#test').css('display', 'block');
+                }
+
+                visible = !visible;
+            }
 
         </script>
 
         <link rel="stylesheet" type="text/css" href="static/sdk.css" />
     </head>
     <body>
+        <!--<div id="test"></div>
+        <button id="btn">Toggle</button>-->
         <div id="viewport"></div>
      </body>
 </html>

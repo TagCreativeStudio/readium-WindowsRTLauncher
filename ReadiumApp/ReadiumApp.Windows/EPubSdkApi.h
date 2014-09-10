@@ -6,6 +6,8 @@
 #include <string>
 
 // Project Includes
+#include "EPubOpenPageRequest.h"
+#include "EPubViewerSettings.h"
 #include "Log.h"
 
 namespace ReadiumApp
@@ -18,6 +20,7 @@ namespace ReadiumApp
 		void readPackages();
 
 		Readium::Package^ openFile(Windows::Storage::IStorageFile^ file);
+		static Windows::Data::Json::JsonObject^ openBook(Readium::Package^ bookPackage, EPubViewerSettings^ viewerSettings, EPubOpenPageRequest^ req);
 		static Windows::Data::Json::JsonObject^ packageToJson(Readium::Package^ package);
 
 	private:

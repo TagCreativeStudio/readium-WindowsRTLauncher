@@ -58,6 +58,12 @@
     <ClInclude Include="WebViewController.h">
       <Filter>API</Filter>
     </ClInclude>
+    <ClInclude Include="EPubViewerSettings.h">
+      <Filter>API</Filter>
+    </ClInclude>
+    <ClInclude Include="EPubOpenPageRequest.h">
+      <Filter>API</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
