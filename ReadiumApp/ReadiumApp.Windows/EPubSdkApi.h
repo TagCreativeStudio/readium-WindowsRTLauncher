@@ -17,7 +17,8 @@ namespace ReadiumApp
 
 		void readPackages();
 
-		void openFile(Windows::Storage::IStorageFile^ file);
+		Readium::Package^ openFile(Windows::Storage::IStorageFile^ file);
+		static Windows::Data::Json::JsonObject^ packageToJson(Readium::Package^ package);
 
 	private:
 

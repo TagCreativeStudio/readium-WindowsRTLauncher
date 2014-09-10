@@ -192,6 +192,7 @@ xcopy /s /y  %src% %dst%</Command>
     <ClInclude Include="PhotoPage.xaml.h">
       <DependentUpon>PhotoPage.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="WebViewController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\NavigationHelper.cpp" />
@@ -204,6 +205,7 @@ xcopy /s /y  %src% %dst%</Command>
     <ClCompile Include="PhotoPage.xaml.cpp">
       <DependentUpon>PhotoPage.xaml</DependentUpon>
     </ClCompile>
+    <ClCompile Include="WebViewController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Readium">
