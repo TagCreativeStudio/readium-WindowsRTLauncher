@@ -53,7 +53,7 @@
             </Grid.ColumnDefinitions>
             
             <Button x:Name="selectEpubBtn" Grid.Column="0" HorizontalAlignment="Left" Content="Select EPub" Click="SelectEPubBtn_Click" VerticalAlignment="Top"/>
-            <WebView x:Name="reader" Grid.Column="1" NavigationCompleted="reader_NavigationCompleted"/>
+            <WebView x:Name="reader" Grid.Column="1" NavigationCompleted="reader_NavigationCompleted" ScriptNotify="reader_ScriptNotify"/>
         </Grid>
     </Grid>
 </Page>

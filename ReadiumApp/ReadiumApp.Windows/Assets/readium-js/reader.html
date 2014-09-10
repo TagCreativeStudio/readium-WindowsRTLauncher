@@ -50,6 +50,11 @@
 
         <script type="text/javascript">
 
+            function ReadiumOpenBook(bookData) {
+                ReadiumSDK.reader.openBook(bookData);
+                window.external.notify('yo!');
+            }
+
             $(document).ready(function () {
                 "use strict";
 

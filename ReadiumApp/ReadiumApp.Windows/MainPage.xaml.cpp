@@ -106,6 +106,7 @@ void MainPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 
 	init.InitializeSdk();
 	Windows::Foundation::Uri^ url = ref new Windows::Foundation::Uri("ms-appx-web:///Assets/readium-js/reader.html");
+	//Windows::Foundation::Uri^ url = ref new Windows::Foundation::Uri("ms-appx-web:///Assets/readium-js/test.html");
 	reader->Navigate(url);
 }
 
@@ -156,4 +157,10 @@ void ReadiumApp::MainPage::reader_NavigationCompleted(Windows::UI::Xaml::Control
 {
 	Log::Debug("[MainPage] NAVIGATION COMPLETED!");
 	Log::Debug("[MainPage] Status " + args->WebErrorStatus.ToString());
+}
+
+
+void ReadiumApp::MainPage::reader_ScriptNotify(Platform::Object^ sender, Windows::UI::Xaml::Controls::NotifyEventArgs^ e)
+{
+	Log::Debug("[MainPage] SCRIPT NOTIFY");
 }

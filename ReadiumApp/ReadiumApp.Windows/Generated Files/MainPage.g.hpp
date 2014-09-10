@@ -43,6 +43,8 @@ void ::ReadiumApp::MainPage::Connect(int connectionId, Platform::Object^ target)
     case 2:
         (safe_cast<::Windows::UI::Xaml::Controls::WebView^>(target))->NavigationCompleted +=
             ref new ::Windows::Foundation::TypedEventHandler<::Windows::UI::Xaml::Controls::WebView^, ::Windows::UI::Xaml::Controls::WebViewNavigationCompletedEventArgs^>(this, (void (::ReadiumApp::MainPage::*)(Windows::UI::Xaml::Controls::WebView^, Windows::UI::Xaml::Controls::WebViewNavigationCompletedEventArgs^))&MainPage::reader_NavigationCompleted);
+        (safe_cast<::Windows::UI::Xaml::Controls::WebView^>(target))->ScriptNotify +=
+            ref new ::Windows::UI::Xaml::Controls::NotifyEventHandler(this, (void (::ReadiumApp::MainPage::*)(Platform::Object^, Windows::UI::Xaml::Controls::NotifyEventArgs^))&MainPage::reader_ScriptNotify);
         break;
     }
     (void)connectionId; // Unused parameter
