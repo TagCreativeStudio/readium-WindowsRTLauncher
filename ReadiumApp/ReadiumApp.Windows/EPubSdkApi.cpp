@@ -48,9 +48,9 @@ Windows::Data::Json::JsonObject^ EPubSdkApi::packageToJson(Readium::Package^ pac
 {
 	JsonObject^ json = ref new JsonObject();
 
-	json->Insert("rootUrl", JsonValue::Parse("/"));
-	json->Insert("rendition_layout", JsonValue::Parse(""));
-	json->Insert("rendition_flow", JsonValue::Parse(""));
+	json->Insert("rootUrl", JsonValue::CreateStringValue("/"));
+	json->Insert("rendition_layout", JsonValue::CreateStringValue(""));
+	json->Insert("rendition_flow", JsonValue::CreateStringValue(""));
 
 	JsonObject^ spine = ref new JsonObject();
 	JsonArray^ spineItems = ref new JsonArray();
@@ -63,20 +63,20 @@ Windows::Data::Json::JsonObject^ EPubSdkApi::packageToJson(Readium::Package^ pac
 		Readium::ManifestItem^ manifestItem = spineItem->ManifestItemRef;
 		if (manifestItem)
 		{
-			currItem->Insert("href", JsonValue::Parse(manifestItem->BaseHref));
+			currItem->Insert("href", JsonValue::CreateStringValue(manifestItem->BaseHref));
 		}
 		else
 		{
-			currItem->Insert("href", JsonValue::Parse(""));
+			currItem->Insert("href", JsonValue::CreateStringValue(""));
 		}
 
-		currItem->Insert("idref", JsonValue::Parse(spineItem->Idref));
+		currItem->Insert("idref", JsonValue::CreateStringValue(spineItem->Idref));
 
-		currItem->Insert("page_spread", JsonValue::Parse(""));
-		currItem->Insert("rendition_layout", JsonValue::Parse(""));
-		currItem->Insert("rendition_spread", JsonValue::Parse(""));
-		currItem->Insert("rendition_flow", JsonValue::Parse(""));
-		currItem->Insert("media_overlay_id", JsonValue::Parse(""));
+		currItem->Insert("page_spread", JsonValue::CreateStringValue(""));
+		currItem->Insert("rendition_layout", JsonValue::CreateStringValue(""));
+		currItem->Insert("rendition_spread", JsonValue::CreateStringValue(""));
+		currItem->Insert("rendition_flow", JsonValue::CreateStringValue(""));
+		currItem->Insert("media_overlay_id", JsonValue::CreateStringValue(""));
 
 		spineItems->Append(currItem);
 
@@ -84,7 +84,7 @@ Windows::Data::Json::JsonObject^ EPubSdkApi::packageToJson(Readium::Package^ pac
 	}
 
 	spine->Insert("items", spineItems);
-	spine->Insert("direction", JsonValue::Parse("default"));
+	spine->Insert("direction", JsonValue::CreateStringValue("default"));
 
 	JsonObject^ mediaOverlay = ref new JsonObject();
 
@@ -101,11 +101,11 @@ Windows::Data::Json::JsonObject^ EPubSdkApi::packageToJson(Readium::Package^ pac
 
 			if (currSmil->XhtmlSpineItem)
 			{
-				model->Insert("spineItemId", JsonValue::Parse(currSmil->XhtmlSpineItem->Idref));
+				model->Insert("spineItemId", JsonValue::CreateStringValue(currSmil->XhtmlSpineItem->Idref));
 			}
 			else
 			{
-				model->Insert("spineItemId", JsonValue::Parse(""));
+				model->Insert("spineItemId", JsonValue::CreateStringValue(""));
 			}
 
 			std::ostringstream ss;
@@ -113,20 +113,20 @@ Windows::Data::Json::JsonObject^ EPubSdkApi::packageToJson(Readium::Package^ pac
 			std::string s = ss.str();
 			std::wstring ws(s.begin(), s.end());
 			Platform::String^ str = ref new Platform::String(ws.c_str());
-			model->Insert("duration", JsonValue::Parse(str));
+			model->Insert("duration", JsonValue::CreateStringValue(str));
 
 			if (currSmil->SmilManifestItem)
 			{
-				model->Insert("id", JsonValue::Parse(currSmil->SmilManifestItem->Identifier));
-				model->Insert("href", JsonValue::Parse(currSmil->SmilManifestItem->Href));
+				model->Insert("id", JsonValue::CreateStringValue(currSmil->SmilManifestItem->Identifier));
+				model->Insert("href", JsonValue::CreateStringValue(currSmil->SmilManifestItem->Href));
 			}
 			else
 			{
-				model->Insert("id", JsonValue::Parse(""));
-				model->Insert("href", JsonValue::Parse("fake.smil"));
+				model->Insert("id", JsonValue::CreateStringValue(""));
+				model->Insert("href", JsonValue::CreateStringValue("fake.smil"));
 			}
 
-			model->Insert("smilVersion", JsonValue::Parse("3.0"));
+			model->Insert("smilVersion", JsonValue::CreateStringValue("3.0"));
 
 			Readium::ISMILSequence^ seqBody = currSmil->Body;
 			//JsonArray^ arrChildren = getJson(seqBody);
@@ -147,14 +147,14 @@ Windows::Data::Json::JsonObject^ EPubSdkApi::packageToJson(Readium::Package^ pac
 			for (unsigned int i = 0; i < count; ++i)
 			{
 				Platform::String^ skip = smilModel->SkippableAt(i);
-				skippables->Append(JsonValue::Parse(skip));
+				skippables->Append(JsonValue::CreateStringValue(skip));
 			}
 
 			count = smilModel->EscapablesCount;
 			for (unsigned int i = 0; i < count; ++i)
 			{
 				Platform::String^ esc = smilModel->EscapableAt(i);
-				skippables->Append(JsonValue::Parse(esc));
+				skippables->Append(JsonValue::CreateStringValue(esc));
 			}
 		}
 

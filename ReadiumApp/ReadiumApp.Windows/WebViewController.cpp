@@ -21,5 +21,9 @@ void WebViewController::openPackage(Readium::Package^ package)
 
 	Platform::String^ tmp[] = { jsonString };
 	Platform::Array<Platform::String^>^ args = { jsonString }; // ref new Platform::Array<Platform::String^> ^ (tmp, 1);
-	webView->InvokeScript("ReadiumSDK.reader.openBook", args);
+
+	if (webView != nullptr)
+	{
+		webView->InvokeScript("ReadiumSDK.reader.openBook", args);
+	}
 }
