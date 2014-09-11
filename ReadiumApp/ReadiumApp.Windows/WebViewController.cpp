@@ -14,6 +14,14 @@ using namespace concurrency;
 WebViewController::WebViewController(Windows::UI::Xaml::Controls::WebView^ view)
 {
 	webView = view;
+	onCallback = ref new FunctionMap();
+
+	// Callback for Reader initialization
+	JsHandler^ onReaderInitialized = ref new JsHandler([](Windows::Data::Json::JsonObject^ json)
+	{
+		Log::Debug("[WebViewController] onReaderInitialized");
+	});
+	onCallback->Insert("onReaderInitialized", onReaderInitialized);
 }
 
 void WebViewController::openPackage(Readium::Package^ package)
@@ -26,7 +34,6 @@ void WebViewController::openPackage(Readium::Package^ package)
 
 	if (webView != nullptr)
 	{
-		//webView->InvokeScript("ReadiumSDK.reader.openBook", args);
 		try
 		{
 			create_task(webView->InvokeScriptAsync("ReadiumOpenBook", args));
@@ -51,7 +58,6 @@ void WebViewController::openBook(Readium::Package^ bookPackage)
 
 	if (webView != nullptr)
 	{
-		//webView->InvokeScript("ReadiumSDK.reader.openBook", args);
 		try
 		{
 			create_task(webView->InvokeScriptAsync("ReadiumOpenBook", args));
@@ -60,5 +66,26 @@ void WebViewController::openBook(Readium::Package^ bookPackage)
 		{
 			Log::Debug("[WebViewController] " + e->HResult.ToString() + ", " + e->Message);
 		}
+	}
+}
+
+void WebViewController::onScriptNotify(Platform::Object^ sender, Windows::UI::Xaml::Controls::NotifyEventArgs^ e)
+{
+	Log::Debug("[WebViewController] onScriptNotify");
+	Platform::String^ val = e->Value;
+	Log::Debug(val);
+	JsonValue^ jsonVal;
+	if (!JsonValue::TryParse(val, &jsonVal))
+	{
+		Log::Debug("[WebViewController] Could not parse string '" + val + "'.");
+		return;
+	}
+
+	JsonObject^ json = jsonVal->GetObject();
+
+	Platform::String^ functionToCall = json->GetNamedString("function");
+	if (onCallback->HasKey(functionToCall))
+	{
+		onCallback->Lookup(functionToCall)->Invoke(json);
 	}
 }

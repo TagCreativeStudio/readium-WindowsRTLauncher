@@ -52,9 +52,6 @@
 
             function ReadiumOpenBook(bookData) {
                 ReadiumSDK.reader.openBook(JSON.parse(bookData));
-                window.external.notify('yo!');
-                //$('#test').html(bookData);
-                //$('#test').html("hello");
             }
 
             $(document).ready(function () {

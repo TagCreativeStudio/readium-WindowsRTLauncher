@@ -29,8 +29,12 @@ ReadiumSDK.HostAppFeedback = function() {
         ReadiumSDK.reader.on(ReadiumSDK.Events.MEDIA_OVERLAY_TTS_SPEAK, this.onMediaOverlayTTSSpeak, this);
         ReadiumSDK.reader.on(ReadiumSDK.Events.MEDIA_OVERLAY_TTS_STOP, this.onMediaOverlayTTSStop, this);
 
-        if (window.LauncherUI) {
-            window.LauncherUI.onReaderInitialized();
+        //if (window.LauncherUI) {
+            //window.LauncherUI.onReaderInitialized();
+        //}
+        if (window.external) {
+            var json = { "function": "onReaderInitialized" };
+            window.external.notify(JSON.stringify(json));
         }
 
     }, this);

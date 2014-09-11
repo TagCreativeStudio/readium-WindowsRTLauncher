@@ -7,8 +7,6 @@
 #include "MainPage.xaml.h"
 #include "PhotoPage.xaml.h"
 
-#include "WebViewController.h"
-
 #include "Log.h"
 
 using namespace ReadiumApp;
@@ -105,6 +103,7 @@ void MainPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 	(void) e;
 
 	init.InitializeSdk();
+	controller = ref new WebViewController(reader);
 	Windows::Foundation::Uri^ url = ref new Windows::Foundation::Uri("ms-appx-web:///Assets/readium-js/reader.html");
 	//Windows::Foundation::Uri^ url = ref new Windows::Foundation::Uri("ms-appx-web:///Assets/readium-js/test.html");
 	reader->Navigate(url);
@@ -145,7 +144,6 @@ void ReadiumApp::MainPage::SelectEPubBtn_Click(Platform::Object^ sender, Windows
 			{
 				Log::Debug(copiedFile->Path);
 				Readium::Package^ package = api.openFile(copiedFile);
-				WebViewController^ controller = ref new WebViewController(reader);
 				controller->openBook(package);
 			});
 		}
@@ -162,5 +160,8 @@ void ReadiumApp::MainPage::reader_NavigationCompleted(Windows::UI::Xaml::Control
 
 void ReadiumApp::MainPage::reader_ScriptNotify(Platform::Object^ sender, Windows::UI::Xaml::Controls::NotifyEventArgs^ e)
 {
-	Log::Debug("[MainPage] SCRIPT NOTIFY");
+	if (controller != nullptr)
+	{
+		controller->onScriptNotify(sender, e);
+	}
 }

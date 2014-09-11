@@ -14,8 +14,15 @@ namespace ReadiumApp
 		void openPackage(Readium::Package^ package);
 		void openBook(Readium::Package^ bookPackage);// , EPubViewerSettings^ viewerSettings, EPubOpenPageRequest^ req);
 
+		void onScriptNotify(Platform::Object^ sender, Windows::UI::Xaml::Controls::NotifyEventArgs^ e);
+
 	private:
 
+		delegate void JsHandler(Windows::Data::Json::JsonObject^ json);
+
+		typedef Platform::Collections::Map < Platform::String^, JsHandler^ > FunctionMap;
+		FunctionMap^ onCallback;
+		
 		Windows::UI::Xaml::Controls::WebView^ webView;
 	};
 }
