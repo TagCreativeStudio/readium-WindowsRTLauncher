@@ -22,7 +22,7 @@ namespace ReadiumApp
 
 		typedef Platform::Collections::Map < Platform::String^, JsHandler^ > FunctionMap;
 		FunctionMap^ onCallback;
-		
+
 		Windows::UI::Xaml::Controls::WebView^ webView;
 	};
 }

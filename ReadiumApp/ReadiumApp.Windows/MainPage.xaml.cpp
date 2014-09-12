@@ -102,10 +102,23 @@ void MainPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 	(void) sender;	// Unused parameter
 	(void) e;
 
+	httpServer = ref new HttpServer(8080);
+	httpServer->Start();
+	Platform::String^ ip = httpServer->FindIpAddress();
+	if (ip == nullptr)
+	{
+		Log::Debug("[MainPage] IP address is null!");
+	}
+	else
+	{
+		Log::Debug("[MainPage] Great success! Hosting at: " + ip);
+	}
+
 	init.InitializeSdk();
 	controller = ref new WebViewController(reader);
 	Windows::Foundation::Uri^ url = ref new Windows::Foundation::Uri("ms-appx-web:///Assets/readium-js/reader.html");
 	//Windows::Foundation::Uri^ url = ref new Windows::Foundation::Uri("ms-appx-web:///Assets/readium-js/test.html");
+	//url = ref new Windows::Foundation::Uri("http://" + ip + ":8080/reader.html");
 	reader->Navigate(url);
 }
 

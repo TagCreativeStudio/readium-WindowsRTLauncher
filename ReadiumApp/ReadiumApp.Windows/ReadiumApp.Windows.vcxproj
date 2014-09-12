@@ -160,6 +160,7 @@ xcopy /s /y  %src% %dst%</Command>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="Assets\readium-js\page.html" />
     <None Include="Assets\readium-js\reader.html" />
     <None Include="ReadiumApp.Windows_TemporaryKey.pfx" />
   </ItemGroup>
@@ -184,6 +185,7 @@ xcopy /s /y  %src% %dst%</Command>
     <ClInclude Include="EPubOpenPageRequest.h" />
     <ClInclude Include="EPubSdkApi.h" />
     <ClInclude Include="EPubViewerSettings.h" />
+    <ClInclude Include="HttpServer.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="MainPage.xaml.h">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -191,6 +193,7 @@ xcopy /s /y  %src% %dst%</Command>
     <ClInclude Include="PhotoPage.xaml.h">
       <DependentUpon>PhotoPage.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="StringHelper.h" />
     <ClInclude Include="WebViewController.h" />
   </ItemGroup>
   <ItemGroup>

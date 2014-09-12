@@ -9,6 +9,7 @@
 #include "Common\NavigationHelper.h"
 
 #include "EPubSdkApi.h"
+#include "HttpServer.h"
 #include "WebViewController.h"
 
 namespace ReadiumApp
@@ -60,5 +61,7 @@ namespace ReadiumApp
 		void reader_NavigationFailed(Platform::Object^ sender, Windows::UI::Xaml::Controls::WebViewNavigationFailedEventArgs^ e);
 		void reader_NavigationCompleted(Windows::UI::Xaml::Controls::WebView^ sender, Windows::UI::Xaml::Controls::WebViewNavigationCompletedEventArgs^ args);
 		void reader_ScriptNotify(Platform::Object^ sender, Windows::UI::Xaml::Controls::NotifyEventArgs^ e);
+
+		HttpServer^ httpServer;
 	};
 }
