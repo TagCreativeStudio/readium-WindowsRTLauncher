@@ -71,7 +71,6 @@
   <ItemGroup>
     <None Include="ReadiumApp.Windows_TemporaryKey.pfx" />
     <None Include="Assets\readium-js\reader.html" />
-    <None Include="Assets\readium-js\test.html" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Logo.scale-100.png">

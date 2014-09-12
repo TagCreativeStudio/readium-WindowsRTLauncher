@@ -351,6 +351,7 @@
                 } catch (ex) {
                     var errorMessage = "Module '" + name + "' failed to load: " + getErrorDesc(ex);
                     consoleLog(errorMessage);
+                    //newModule.fail(getErrorDesc(ex));
                 }
             }
         });

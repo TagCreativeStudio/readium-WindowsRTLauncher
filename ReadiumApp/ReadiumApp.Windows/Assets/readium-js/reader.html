@@ -50,8 +50,41 @@
 
         <script type="text/javascript">
 
+            var DEBUG = true;
+
+            if (DEBUG) {
+                var oldLog = console.log;
+                console.log = function (msg) {
+                    $('#log').append('[LOG] ' + msg + '\n');
+
+                    oldLog.apply(console, arguments);
+                };
+
+                var oldWarn = console.warn;
+                console.warn = function (msg) {
+                    $('#log').append('[WARN] ' + msg + '\n');
+
+                    oldWarn.apply(console, arguments);
+                };
+
+                var oldErr = console.error;
+                console.error = function (msg) {
+                    $('#log').append('[ERR] ' + msg + '\n');
+
+                    oldErr.apply(console, arguments);
+                };
+
+                var oldDebug = console.debug;
+                console.debug = function (msg) {
+                    $('#log').append('[DBG] ' + msg + '\n');
+
+                    oldDebug.apply(console, arguments);
+                };
+            }
+
             function ReadiumOpenBook(bookData) {
                 ReadiumSDK.reader.openBook(JSON.parse(bookData));
+                $('#viewport').css('background', 'pink');
             }
 
             $(document).ready(function () {
@@ -60,23 +93,26 @@
                 ReadiumSDK.reader = new ReadiumSDK.Views.ReaderView({el:"#viewport"});
                 ReadiumSDK.trigger(ReadiumSDK.Events.READER_INITIALIZED);
 
-                $('#test').css('background', 'pink').css('width', '100%').css('height', '90%');
-                $('#btn').on('click', onBtnClick);
+                //$('#test').css('background', 'pink').css('width', '100%').css('height', '90%');
+                //$('#btn').on('click', onBtnClick);
+
+                $('#viewport').css('height', '80%');
+                $('#log').css('width', '100%').css('height', '20%').css('background', 'red');
 
             });
 
-            var visible = true;
-            function onBtnClick(e) {
-                window.external.notify('toggle!');
-                if (visible === true) {
-                    $('#test').css('display', 'none');
-                    $('#viewport').css('background', 'green');
-                } else {
-                    $('#test').css('display', 'block');
-                }
+            //var visible = true;
+            //function onBtnClick(e) {
+            //    window.external.notify('toggle!');
+            //    if (visible === true) {
+            //        $('#test').css('display', 'none');
+            //        $('#viewport').css('background', 'green');
+            //    } else {
+            //        $('#test').css('display', 'block');
+            //    }
 
-                visible = !visible;
-            }
+            //    visible = !visible;
+            //}
 
         </script>
 
@@ -86,5 +122,6 @@
         <!--<div id="test"></div>
         <button id="btn">Toggle</button>-->
         <div id="viewport"></div>
+        <textarea id="log"></textarea>
      </body>
 </html>

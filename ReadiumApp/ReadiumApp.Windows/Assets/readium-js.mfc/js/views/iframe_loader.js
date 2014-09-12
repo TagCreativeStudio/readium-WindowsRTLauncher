@@ -19,57 +19,27 @@
 
 ReadiumSDK.Views.IFrameLoader = function() {
 
-    var self = this;
-    var eventListeners = {};
-
-
-    this.addIFrameEventListener = function(eventName, callback, context) {
-
-        if(eventListeners[eventName] == undefined) {
-            eventListeners[eventName] = [];
-        }
-
-        eventListeners[eventName].push({callback: callback, context: context});
-    };
-
-    this.updateIframeEvents = function(iframe) {
-
-        _.each(eventListeners, function(value, key){
-            for(var i = 0, count = value.length; i< count; i++) {
-                $(iframe.contentWindow).off(key);
-                $(iframe.contentWindow).on(key, value[i].callback, value[i].context);
-            }
-        });
-    };
-
-
     this.loadIframe = function(iframe, src, callback, context) {
 
-        //throw new Error("2");
         var isWaitingForFrameLoad = true;
 
         iframe.onload = function() {
 
-            iframe.onload = undefined;
-
-            isWaitingForFrameLoad = false;
-
-            self.updateIframeEvents(iframe);
-
             try
             {
                 iframe.contentWindow.navigator.epubReadingSystem = navigator.epubReadingSystem;
-                // console.debug("epubReadingSystem name:"
-                //     + iframe.contentWindow.navigator.epubReadingSystem.name
-                //     + " version:"
-                //     + iframe.contentWindow.navigator.epubReadingSystem.version
-                //     + " is loaded to iframe");
+                console.debug("epubReadingSystem name:"
+                    + iframe.contentWindow.navigator.epubReadingSystem.name
+                    + " version:"
+                    + iframe.contentWindow.navigator.epubReadingSystem.version
+                    + " is loaded to iframe");
             }
             catch(ex)
             {
                 console.log("epubReadingSystem INJECTION ERROR! " + ex.message);
             }
 
+            isWaitingForFrameLoad = false;
             callback.call(context, true);
 
         };
@@ -79,12 +49,11 @@ ReadiumSDK.Views.IFrameLoader = function() {
         window.setTimeout(function(){
 
             if(isWaitingForFrameLoad) {
-
                 isWaitingForFrameLoad = false;
                 callback.call(context, false);
             }
 
-        }, 8000);
+        }, 500);
 
         iframe.src = src;
     };

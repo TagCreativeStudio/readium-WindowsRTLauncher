@@ -170,7 +170,7 @@ ReadiumSDK.Views.ReflowableView = function(options){
 
             var src = _spine.package.resolveRelativeUrl(spineItem.href);
             self.trigger(ReadiumSDK.Events.CONTENT_DOCUMENT_LOAD_START, _$iframe, spineItem);
-
+            throw new Error("asdfsdf");
             _$iframe.css("opacity", "0.01");
             
             _iframeLoader.loadIframe(_$iframe[0], src, onIFrameLoad, self, {spineItem : spineItem});
@@ -205,6 +205,7 @@ ReadiumSDK.Views.ReflowableView = function(options){
         }
 
         if(!success) {
+            throw new Error("1");
             _$iframe.css("opacity", "1");
             _deferredPageRequest = undefined;
             return;

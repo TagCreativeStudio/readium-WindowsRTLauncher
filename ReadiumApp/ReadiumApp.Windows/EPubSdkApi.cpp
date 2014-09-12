@@ -24,7 +24,7 @@ Readium::Package^ EPubSdkApi::openFile(Windows::Storage::IStorageFile^ file)
 		return nullptr;
 	}
 
-	 packages = container->Packages();
+	packages = container->Packages();
 	if (!packages)
 	{
 		Log::Debug("[EPubSdkApi] Could not retrieve pacakages from container.");

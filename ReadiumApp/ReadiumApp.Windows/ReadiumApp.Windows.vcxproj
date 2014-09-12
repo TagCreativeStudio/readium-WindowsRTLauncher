@@ -161,9 +161,6 @@ xcopy /s /y  %src% %dst%</Command>
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="Assets\readium-js\reader.html" />
-    <None Include="Assets\readium-js\test.html">
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
-    </None>
     <None Include="ReadiumApp.Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

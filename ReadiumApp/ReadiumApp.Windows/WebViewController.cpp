@@ -47,7 +47,8 @@ void WebViewController::openPackage(Readium::Package^ package)
 
 void WebViewController::openBook(Readium::Package^ bookPackage)
 {
-	EPubOpenPageRequest^ req = EPubOpenPageRequest::fromContentUrl("", "chapter_001.xhtml");
+	/*EPubOpenPageRequest^ req = EPubOpenPageRequest::fromContentUrl("", "chapter_001.xhtml");*/
+	EPubOpenPageRequest^ req = EPubOpenPageRequest::fromContentUrl("pr01.xhtml", "pr01.xhtml");
 	EPubViewerSettings^ view = ref new EPubViewerSettings(true, 100, 20);
 	JsonObject^ json = EPubSdkApi::openBook(bookPackage, view, req);
 
