@@ -173,6 +173,22 @@ namespace ReadiumApp
 			Log::Debug("[HttpServer] Method: " + method);
 			Log::Debug("[HttpServer] URL: " + url);
 
+			Platform::String^ str = ref new Platform::String();
+			str =  "HTTP/1.0 200 OK\n";
+			str += "Content-Type: text/html\n";
+			str += "Connection: close\n";
+			str += "\n";
+
+			str += "<html><head><title>Test</title></head>";
+			str += "<body>";
+			str += "<h1>Hello From HttpServer!</h1>";
+			str += "</body>";
+			str += "</html>";
+
+			Log::Debug("[HttpServer] " + str);
+
+			writer->WriteString(str);
+			writer->FlushAsync();
 		}
 
 

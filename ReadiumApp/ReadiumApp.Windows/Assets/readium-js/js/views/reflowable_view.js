@@ -206,11 +206,13 @@ ReadiumSDK.Views.ReflowableView = function(options){
         }
 
         if(!success) {
+            throw new Error("1");
             _$iframe.css("opacity", "1");
             _deferredPageRequest = undefined;
             return;
         }
 
+        throw new Error("2");
         self.trigger(ReadiumSDK.Events.CONTENT_DOCUMENT_LOADED, _$iframe, _currentSpineItem);
 
         var epubContentDocument = _$iframe[0].contentDocument;
