@@ -15,6 +15,8 @@ namespace ReadiumApp
 		void openBook(Readium::Package^ bookPackage);// , EPubViewerSettings^ viewerSettings, EPubOpenPageRequest^ req);
 
 		void onScriptNotify(Platform::Object^ sender, Windows::UI::Xaml::Controls::NotifyEventArgs^ e);
+		void notify(Windows::Data::Json::JsonObject^ json);
+		void notify(Platform::String^ data);
 
 	private:
 

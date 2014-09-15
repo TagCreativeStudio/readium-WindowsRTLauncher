@@ -87,7 +87,7 @@ namespace ReadiumApp
 		{
 			Log::Debug("[HttpServer] OnConnectionReceived");
 			//concurrency::create_task(HandleRequest(args->Socket));
-			HandleRequestAsync(args->Socket);
+			HandleRequestAsync2(args->Socket);
 		}
 
 		void HandleRequest(StreamSock^ sock)
@@ -132,7 +132,7 @@ namespace ReadiumApp
 			return ref new Platform::String(data.c_str());
 		}
 
-		/*Windows::Foundation::IAsyncAction^ HandleRequestAsync(StreamSock^ sock)*/
+		//Windows::Foundation::IAsyncOperation<bool>^ HandleRequestAsync(StreamSock^ sock)
 		void HandleRequestAsync(StreamSock^ sock)
 		{
 			using namespace concurrency;
@@ -164,6 +164,7 @@ namespace ReadiumApp
 			if (tokens->Size != 3)
 			{
 				Log::Debug("[HttpServer] Invalid HTTP request line.");
+				//return nullptr;
 				return;
 			}
 
@@ -188,7 +189,74 @@ namespace ReadiumApp
 			Log::Debug("[HttpServer] " + str);
 
 			writer->WriteString(str);
-			writer->FlushAsync();
+			writer->StoreAsync();
+			//return writer->FlushAsync();
+		}
+
+		void HandleRequestAsync2(StreamSock^ sock)
+		{
+			using namespace concurrency;
+			using namespace Platform::Collections;
+			using namespace Windows::Foundation;
+
+			// Init IO
+			Reader^ reader = ref new Reader(sock->InputStream);
+			Writer^ writer = ref new Writer(sock->OutputStream);
+			writer->UnicodeEncoding = Windows::Storage::Streams::UnicodeEncoding::Utf8;
+
+			// Read the HTTP request
+			/*create_task(StreamReadlineAsync(reader))
+			.then([this](Platform::String^ req)
+			{
+			Vector<Platform::String^>^ tokens = StringHelper::Split(req, ' ');
+			if (tokens->Size != 3)
+			{
+			Log::Debug("[HttpServer] Invalid HTTP request line.");
+			return;
+			}
+
+			Platform::String^ method = tokens->GetAt(0);
+			Platform::String^ url = tokens->GetAt(1);
+			});*/
+
+			Platform::String^ req = StreamReadlineAsync(reader);
+			//create_task(StreamReadlineAsync2(reader))
+			//	.then([this, writer](Platform::String^ req)
+			//{
+			//	Log::Debug("ASDFASDFSaDF");
+			//	Vector<Platform::String^>^ tokens = StringHelper::Split(req, ' ');
+			//	if (tokens->Size != 3)
+			//	{
+			//		Log::Debug("[HttpServer] Invalid HTTP request line.");
+			//		//return nullptr;
+			//		return;
+			//	}
+
+			//	Platform::String^ method = tokens->GetAt(0);
+			//	Platform::String^ url = tokens->GetAt(1);
+
+			//	Log::Debug("[HttpServer] Method: " + method);
+			//	Log::Debug("[HttpServer] URL: " + url);
+
+			//	Platform::String^ str = ref new Platform::String();
+			//	str = "HTTP/1.0 200 OK\n";
+			//	str += "Content-Type: text/html\n";
+			//	str += "Connection: close\n";
+			//	str += "\n";
+
+			//	str += "<html><head><title>Test</title></head>";
+			//	str += "<body>";
+			//	str += "<h1>Hello From HttpServer!</h1>";
+			//	str += "</body>";
+			//	str += "</html>";
+
+			//	Log::Debug("[HttpServer] " + str);
+
+			//	writer->WriteString(str);
+			//	writer->StoreAsync();
+			//	//return writer->FlushAsync();
+			//});
+			
 		}
 
 
@@ -227,6 +295,63 @@ namespace ReadiumApp
 				return ref new Platform::String(data.c_str());
 			});*/
 		}
+
+//		Windows::Foundation::IAsyncOperation<Platform::String^>^ StreamReadlineAsync2(Reader^ reader)
+//		{
+//			using namespace concurrency;
+//			std::wstring data(L"");
+//			bool loaded = true;
+//			bool reading = true;
+//			
+//
+//			//Windows::Storage::Streams::DataReaderLoadOperation^ op = reader->LoadAsync(1);
+//			/*while (true)
+//			{
+//				if (!loaded || !reading)
+//				{
+//					continue;
+//				}
+//
+//				loaded = false;*/
+//				create_task(reader->LoadAsync(2048))
+//					.then([this, reader, &data, &loaded, &reading](unsigned int size)
+//				{
+//					loaded = true;
+//					wchar_t nextChar = reader->ReadByte();
+//					while (nextChar != '\n')
+//					{
+//						if (nextChar != '\r')
+//						{
+//							data += nextChar;
+//						}
+//						else if (nextChar == '\n')
+//						{
+//							return ref new Platform::String(data.c_str());
+//						}
+//					}
+//
+//					return ref new Platform::String(data.c_str());
+///*
+//					if (nextChar == '\n')
+//					{
+//						Log::Debug("done");
+//						reading = false;
+//						return ref new Platform::String(data.c_str());
+//					}
+//					else if (nextChar != '\r')
+//					{
+//						data += nextChar;
+//					}
+//					Log::Debug(ref new Platform::String(data.c_str()));*/
+//				});
+//			//}
+//
+//			//return ref new Platform::String(data.c_str());
+//
+//			create_task([&data]() {
+//			    return ref new Platform::String(data.c_str()); 
+//			});
+//		}
 
 		int port;
 		bool isActive;

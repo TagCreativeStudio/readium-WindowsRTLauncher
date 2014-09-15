@@ -103,7 +103,7 @@ void MainPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 	(void) e;
 
 	httpServer = ref new HttpServer(8080);
-	httpServer->Start();
+	httpServer->Start(); 
 	Platform::String^ ip = httpServer->FindIpAddress();
 	if (ip == nullptr)
 	{
@@ -177,4 +177,16 @@ void ReadiumApp::MainPage::reader_ScriptNotify(Platform::Object^ sender, Windows
 	{
 		controller->onScriptNotify(sender, e);
 	}
+}
+
+
+void ReadiumApp::MainPage::reader_FrameContentLoading(Windows::UI::Xaml::Controls::WebView^ sender, Windows::UI::Xaml::Controls::WebViewContentLoadingEventArgs^ args)
+{
+	Log::Debug("[MainPage] FRAME CONTENT LOADING!");
+}
+
+
+void ReadiumApp::MainPage::reader_FrameNavigationStarting(Windows::UI::Xaml::Controls::WebView^ sender, Windows::UI::Xaml::Controls::WebViewNavigationStartingEventArgs^ args)
+{
+	Log::Debug("[MainPage] FRAME NAVIGATION STARTING: " + args->Uri->ToString());
 }

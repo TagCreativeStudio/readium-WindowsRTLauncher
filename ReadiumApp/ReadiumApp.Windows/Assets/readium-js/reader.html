@@ -84,7 +84,16 @@
 
             function ReadiumOpenBook(bookData) {
                 ReadiumSDK.reader.openBook(JSON.parse(bookData));
-                $('#viewport').css('background', 'pink');
+            }
+
+            function ReadiumLoadSpineItem(json) {
+                 json = JSON.parse(json);
+                 console.log("Contents: " + json.contents);
+                 _$iframe = $("#epubContentIframe");
+                 _$iframe[0].contentWindow.document.write(json.contents);
+                 //_$iframe.css("opacity", "1");
+                 ReadiumSDK.reader.getCurrentView().onIFrameLoad(true);
+                //console.log("Contents (string): " + json);
             }
 
             $(document).ready(function () {

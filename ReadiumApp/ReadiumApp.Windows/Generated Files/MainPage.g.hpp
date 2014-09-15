@@ -45,6 +45,10 @@ void ::ReadiumApp::MainPage::Connect(int connectionId, Platform::Object^ target)
             ref new ::Windows::Foundation::TypedEventHandler<::Windows::UI::Xaml::Controls::WebView^, ::Windows::UI::Xaml::Controls::WebViewNavigationCompletedEventArgs^>(this, (void (::ReadiumApp::MainPage::*)(Windows::UI::Xaml::Controls::WebView^, Windows::UI::Xaml::Controls::WebViewNavigationCompletedEventArgs^))&MainPage::reader_NavigationCompleted);
         (safe_cast<::Windows::UI::Xaml::Controls::WebView^>(target))->ScriptNotify +=
             ref new ::Windows::UI::Xaml::Controls::NotifyEventHandler(this, (void (::ReadiumApp::MainPage::*)(Platform::Object^, Windows::UI::Xaml::Controls::NotifyEventArgs^))&MainPage::reader_ScriptNotify);
+        (safe_cast<::Windows::UI::Xaml::Controls::WebView^>(target))->FrameContentLoading +=
+            ref new ::Windows::Foundation::TypedEventHandler<::Windows::UI::Xaml::Controls::WebView^, ::Windows::UI::Xaml::Controls::WebViewContentLoadingEventArgs^>(this, (void (::ReadiumApp::MainPage::*)(Windows::UI::Xaml::Controls::WebView^, Windows::UI::Xaml::Controls::WebViewContentLoadingEventArgs^))&MainPage::reader_FrameContentLoading);
+        (safe_cast<::Windows::UI::Xaml::Controls::WebView^>(target))->FrameNavigationStarting +=
+            ref new ::Windows::Foundation::TypedEventHandler<::Windows::UI::Xaml::Controls::WebView^, ::Windows::UI::Xaml::Controls::WebViewNavigationStartingEventArgs^>(this, (void (::ReadiumApp::MainPage::*)(Windows::UI::Xaml::Controls::WebView^, Windows::UI::Xaml::Controls::WebViewNavigationStartingEventArgs^))&MainPage::reader_FrameNavigationStarting);
         break;
     }
     (void)connectionId; // Unused parameter

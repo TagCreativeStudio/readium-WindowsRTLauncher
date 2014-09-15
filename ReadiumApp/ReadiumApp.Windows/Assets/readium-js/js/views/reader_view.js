@@ -64,6 +64,14 @@ ReadiumSDK.Views.ReaderView = function(options) {
         _iframeLoader = new ReadiumSDK.Views.IFrameLoader();
     }
 
+    this.getIframeLoader = function() {
+        return _iframeLoader;
+    }
+
+    this.getCurrentView = function() {
+        return _currentView;
+    }
+
     function createViewForType(viewType, options) {
 
         switch(viewType) {

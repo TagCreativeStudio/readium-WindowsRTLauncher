@@ -53,7 +53,7 @@
             </Grid.ColumnDefinitions>
             
             <Button x:ConnectionId='1' x:Name="selectEpubBtn" Grid.Column="0" HorizontalAlignment="Left" Content="Select EPub"                             VerticalAlignment="Top"/>
-            <WebView x:ConnectionId='2' x:Name="reader" Grid.Column="1"                                                                                    />
+            <WebView x:ConnectionId='2' x:Name="reader" Grid.Column="1"                                                                                                                                                                                              />
         </Grid>
     </Grid>
 </Page>
