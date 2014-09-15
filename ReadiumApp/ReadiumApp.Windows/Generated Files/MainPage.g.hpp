@@ -22,10 +22,14 @@ void ::ReadiumApp::MainPage::InitializeComponent()
     // Call LoadComponent on ms-appx:///MainPage.xaml
     ::Windows::UI::Xaml::Application::LoadComponent(this, ref new ::Windows::Foundation::Uri(L"ms-appx:///MainPage.xaml"), ::Windows::UI::Xaml::Controls::Primitives::ComponentResourceLocation::Application);
 
-    // Get the Button named 'selectEpubBtn'
-    selectEpubBtn = safe_cast<::Windows::UI::Xaml::Controls::Button^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"selectEpubBtn"));
     // Get the WebView named 'reader'
     reader = safe_cast<::Windows::UI::Xaml::Controls::WebView^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"reader"));
+    // Get the Button named 'selectEpubBtn'
+    selectEpubBtn = safe_cast<::Windows::UI::Xaml::Controls::Button^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"selectEpubBtn"));
+    // Get the Button named 'prev'
+    prev = safe_cast<::Windows::UI::Xaml::Controls::Button^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"prev"));
+    // Get the Button named 'next'
+    next = safe_cast<::Windows::UI::Xaml::Controls::Button^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"next"));
     // Get the Button named 'backButton'
     backButton = safe_cast<::Windows::UI::Xaml::Controls::Button^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"backButton"));
     // Get the TextBlock named 'pageTitle'
@@ -37,10 +41,6 @@ void ::ReadiumApp::MainPage::Connect(int connectionId, Platform::Object^ target)
     switch (connectionId)
     {
     case 1:
-        (safe_cast<::Windows::UI::Xaml::Controls::Primitives::ButtonBase^>(target))->Click +=
-            ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ReadiumApp::MainPage::*)(Platform::Object^, Windows::UI::Xaml::RoutedEventArgs^))&MainPage::SelectEPubBtn_Click);
-        break;
-    case 2:
         (safe_cast<::Windows::UI::Xaml::Controls::WebView^>(target))->NavigationCompleted +=
             ref new ::Windows::Foundation::TypedEventHandler<::Windows::UI::Xaml::Controls::WebView^, ::Windows::UI::Xaml::Controls::WebViewNavigationCompletedEventArgs^>(this, (void (::ReadiumApp::MainPage::*)(Windows::UI::Xaml::Controls::WebView^, Windows::UI::Xaml::Controls::WebViewNavigationCompletedEventArgs^))&MainPage::reader_NavigationCompleted);
         (safe_cast<::Windows::UI::Xaml::Controls::WebView^>(target))->ScriptNotify +=
@@ -49,6 +49,18 @@ void ::ReadiumApp::MainPage::Connect(int connectionId, Platform::Object^ target)
             ref new ::Windows::Foundation::TypedEventHandler<::Windows::UI::Xaml::Controls::WebView^, ::Windows::UI::Xaml::Controls::WebViewContentLoadingEventArgs^>(this, (void (::ReadiumApp::MainPage::*)(Windows::UI::Xaml::Controls::WebView^, Windows::UI::Xaml::Controls::WebViewContentLoadingEventArgs^))&MainPage::reader_FrameContentLoading);
         (safe_cast<::Windows::UI::Xaml::Controls::WebView^>(target))->FrameNavigationStarting +=
             ref new ::Windows::Foundation::TypedEventHandler<::Windows::UI::Xaml::Controls::WebView^, ::Windows::UI::Xaml::Controls::WebViewNavigationStartingEventArgs^>(this, (void (::ReadiumApp::MainPage::*)(Windows::UI::Xaml::Controls::WebView^, Windows::UI::Xaml::Controls::WebViewNavigationStartingEventArgs^))&MainPage::reader_FrameNavigationStarting);
+        break;
+    case 2:
+        (safe_cast<::Windows::UI::Xaml::Controls::Primitives::ButtonBase^>(target))->Click +=
+            ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ReadiumApp::MainPage::*)(Platform::Object^, Windows::UI::Xaml::RoutedEventArgs^))&MainPage::SelectEPubBtn_Click);
+        break;
+    case 3:
+        (safe_cast<::Windows::UI::Xaml::Controls::Primitives::ButtonBase^>(target))->Click +=
+            ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ReadiumApp::MainPage::*)(Platform::Object^, Windows::UI::Xaml::RoutedEventArgs^))&MainPage::prev_Click);
+        break;
+    case 4:
+        (safe_cast<::Windows::UI::Xaml::Controls::Primitives::ButtonBase^>(target))->Click +=
+            ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ReadiumApp::MainPage::*)(Platform::Object^, Windows::UI::Xaml::RoutedEventArgs^))&MainPage::next_Click);
         break;
     }
     (void)connectionId; // Unused parameter

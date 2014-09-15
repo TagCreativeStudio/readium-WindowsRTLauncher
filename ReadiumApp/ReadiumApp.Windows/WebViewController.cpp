@@ -139,3 +139,13 @@ void WebViewController::notify(Platform::String^ data)
 	args->Append(data);
 	webView->InvokeScriptAsync("ReadiumLoadSpineItem", args);
 }
+
+void WebViewController::openPageLeft()
+{
+	webView->InvokeScriptAsync("ReadiumOpenPageLeft", nullptr);
+}
+
+void WebViewController::openPageRight()
+{
+	webView->InvokeScriptAsync("ReadiumOpenPageRight", nullptr);
+}

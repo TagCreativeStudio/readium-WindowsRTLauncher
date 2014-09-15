@@ -52,8 +52,38 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             
-            <Button x:Name="selectEpubBtn" Grid.Column="0" HorizontalAlignment="Left" Content="Select EPub" Click="SelectEPubBtn_Click" VerticalAlignment="Top"/>
-            <WebView x:Name="reader" Grid.Column="1" NavigationCompleted="reader_NavigationCompleted" ScriptNotify="reader_ScriptNotify" FrameContentLoading="reader_FrameContentLoading" FrameNavigationStarting="reader_FrameNavigationStarting"/>
+            <StackPanel
+                Grid.Column="0">
+
+                <Button x:Name="selectEpubBtn" Grid.Column="0" HorizontalAlignment="Left" Content="Select EPub" Click="SelectEPubBtn_Click" VerticalAlignment="Top"/>
+                
+                <Button
+                    x:Name="prev"
+                    Grid.Column="0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Content="Prev"
+                    Click="prev_Click"/>
+
+                <Button
+                    x:Name="next"
+                    Grid.Column="0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Content="Next"
+                    Click="next_Click"/>
+
+            </StackPanel>
+            
+            
+            <WebView 
+                x:Name="reader" 
+                Grid.Column="1" 
+                NavigationCompleted="reader_NavigationCompleted" 
+                ScriptNotify="reader_ScriptNotify" 
+                FrameContentLoading="reader_FrameContentLoading" 
+                FrameNavigationStarting="reader_FrameNavigationStarting"/>
+            
         </Grid>
     </Grid>
 </Page>

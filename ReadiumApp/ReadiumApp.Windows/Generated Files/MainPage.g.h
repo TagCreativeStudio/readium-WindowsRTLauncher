@@ -12,8 +12,8 @@ namespace Windows {
     namespace UI {
         namespace Xaml {
             namespace Controls {
-                ref class Button;
                 ref class WebView;
+                ref class Button;
                 ref class TextBlock;
             }
         }
@@ -32,8 +32,10 @@ namespace ReadiumApp
     private:
         bool _contentLoaded;
     
-        private: ::Windows::UI::Xaml::Controls::Button^ selectEpubBtn;
         private: ::Windows::UI::Xaml::Controls::WebView^ reader;
+        private: ::Windows::UI::Xaml::Controls::Button^ selectEpubBtn;
+        private: ::Windows::UI::Xaml::Controls::Button^ prev;
+        private: ::Windows::UI::Xaml::Controls::Button^ next;
         private: ::Windows::UI::Xaml::Controls::Button^ backButton;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ pageTitle;
     };

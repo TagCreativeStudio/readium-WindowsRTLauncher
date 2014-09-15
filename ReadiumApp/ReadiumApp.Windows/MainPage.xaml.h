@@ -65,5 +65,7 @@ namespace ReadiumApp
 		HttpServer^ httpServer;
 		void reader_FrameContentLoading(Windows::UI::Xaml::Controls::WebView^ sender, Windows::UI::Xaml::Controls::WebViewContentLoadingEventArgs^ args);
 		void reader_FrameNavigationStarting(Windows::UI::Xaml::Controls::WebView^ sender, Windows::UI::Xaml::Controls::WebViewNavigationStartingEventArgs^ args);
+		void prev_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		void next_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 	};
 }

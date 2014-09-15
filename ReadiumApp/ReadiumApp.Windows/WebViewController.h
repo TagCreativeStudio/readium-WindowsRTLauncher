@@ -18,6 +18,9 @@ namespace ReadiumApp
 		void notify(Windows::Data::Json::JsonObject^ json);
 		void notify(Platform::String^ data);
 
+		void openPageLeft();
+		void openPageRight();
+
 	private:
 
 		delegate void JsHandler(Windows::Data::Json::JsonObject^ json);

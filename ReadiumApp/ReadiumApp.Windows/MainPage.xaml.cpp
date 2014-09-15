@@ -190,3 +190,23 @@ void ReadiumApp::MainPage::reader_FrameNavigationStarting(Windows::UI::Xaml::Con
 {
 	Log::Debug("[MainPage] FRAME NAVIGATION STARTING: " + args->Uri->ToString());
 }
+
+
+void ReadiumApp::MainPage::prev_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	Log::Debug("[MainPage] Previous page");
+	if (controller)
+	{
+		controller->openPageLeft();
+	}
+}
+
+
+void ReadiumApp::MainPage::next_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	Log::Debug("[MainPage] Next page");
+	if (controller)
+	{
+		controller->openPageRight();
+	}
+}
