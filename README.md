@@ -8,6 +8,7 @@ This is a Windows Store test app that exists to determine if/how we can get Read
 - [Linking to the Readium SDK](#linking-to-the-readium-sdk)
 - [Passing Cert](#passing-cert)
 - [Copying Readium Web Content](#copying-readium-web-content)
+- [Displaying an ePub in a WebView](#displaying-an-epub-in-a-webview)
 
 ## Dependencies
 
@@ -33,3 +34,7 @@ Only the Release build of the app will pass cert as Debug builds are not allowed
 ## Copying Readium Web Content
 
 In the `Assets` folder of the Windows project there is a sub-folder called `readium-js` that is required to load web content. Currently this folder is not part of the project (and I'm unable to add it for some reason or another) and must be manually copied to the output folder which is in the root of the repo and called `Debug` or `Release` depending on how you're building.
+
+## Displaying an ePub in a WebView
+
+To display an ePub we use WebView's [NavigateToLocalStreamUri](http://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.xaml.controls.webview.navigatetolocalstreamuri.aspx). This allows us to provide a stream resolver which effectively acts as an HTTP server (HTTP servers are what all the other launcher apps use but there is no off-the-shelf HTTP server for WinRT). Microsoft's explanation and documentation of the functionality is somewhat..lacking...but [this helpful article](http://blogs.msdn.com/b/wsdevsol/archive/2014/06/20/a-primer-on-webview-navigatetolocalstreamuri.aspx) does a good job of explaing how `NavigateToLocalStreamUri` works with examples.
