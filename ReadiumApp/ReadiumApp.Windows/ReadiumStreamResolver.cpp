@@ -43,20 +43,30 @@ IAsyncOperation<IInputStream^>^ ReadiumStreamResolver::UriToStreamAsync(Windows:
 
 	auto split = StringHelper::Split(strToSplit, '/');
 
-	//if (split->GetAt(0) == L"readium-js")
+	if (split->GetAt(0) == L"readium-js")
 	{
 		// Load from Assets/ folder
-		return GetFileStreamFromApplicationUriAsync(appDataUri);
+		if (split->Size == 1)
+		{
+			return create_async([]()->IInputStream^
+			{
+				return nullptr;
+			});
+		}
+		else
+		{
+			return GetFileStreamFromApplicationUriAsync(appDataUri);
+		}
 	}
-	//else
-	//{
-	//	// Load from ePub document
-	//	return create_async([this, relativePath]()->IInputStream^
-	//	{
-	//		return this->package->ReadStreamForRelativePath("EPUB/" + relativePath);
-	//		//return this->package->ReadStreamForItemAtPath("/EPUB/" + relativePath);
-	//	});
-	//}
+	else
+	{
+		// Load from ePub document
+		return create_async([this, relativePath]()->IInputStream^
+		{
+			return this->package->ReadStreamForRelativePath(StringHelper::TrimLeadingSlash(relativePath));
+			//return this->package->ReadStreamForItemAtPath("/EPUB/" + relativePath);
+		});
+	}
 }
 
 IAsyncOperation<bool>^ ReadiumStreamResolver::FileExists(Uri^ uri)
