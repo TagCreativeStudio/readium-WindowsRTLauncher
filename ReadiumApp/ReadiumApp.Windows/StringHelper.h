@@ -39,6 +39,20 @@ namespace ReadiumApp
 			return vec;
 		}
 
+		static Platform::String^ TrimLeadingSlash(Platform::String^ str)
+		{
+			std::wstring s = StringHelper::PlatformToStd(str);
+			if (s.substr(0, 1) == L"/")
+			{
+				// Trim leading slash
+				return StringHelper::StdToPlatform(s.substr(1, std::wstring::npos));
+			}
+			else
+			{
+				return str;
+			}
+		}
+
 	private:
 
 		static StringVector^ Split(Platform::String^ str, wchar_t delim, StringVector^ &elems)

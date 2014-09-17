@@ -160,6 +160,7 @@ xcopy /s /y  %src% %dst%</Command>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="Assets\pr01.xhtml" />
     <None Include="Assets\readium-js\page.html" />
     <None Include="Assets\readium-js\reader.html" />
     <None Include="ReadiumApp.Windows_TemporaryKey.pfx" />
@@ -193,6 +194,7 @@ xcopy /s /y  %src% %dst%</Command>
     <ClInclude Include="PhotoPage.xaml.h">
       <DependentUpon>PhotoPage.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="ReadiumStreamResolver.h" />
     <ClInclude Include="StringHelper.h" />
     <ClInclude Include="WebViewController.h" />
   </ItemGroup>
@@ -207,6 +209,7 @@ xcopy /s /y  %src% %dst%</Command>
     <ClCompile Include="PhotoPage.xaml.cpp">
       <DependentUpon>PhotoPage.xaml</DependentUpon>
     </ClCompile>
+    <ClCompile Include="ReadiumStreamResolver.cpp" />
     <ClCompile Include="WebViewController.cpp" />
   </ItemGroup>
   <ItemGroup>

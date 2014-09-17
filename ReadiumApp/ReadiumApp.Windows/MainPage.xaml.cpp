@@ -6,6 +6,7 @@
 #include "pch.h"
 #include "MainPage.xaml.h"
 #include "PhotoPage.xaml.h"
+#include "ReadiumStreamResolver.h"
 
 #include "Log.h"
 
@@ -102,7 +103,9 @@ void MainPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 	(void) sender;	// Unused parameter
 	(void) e;
 
-	httpServer = ref new HttpServer(8080);
+	using namespace Windows::Foundation;
+
+	/*httpServer = ref new HttpServer(8080);
 	httpServer->Start(); 
 	Platform::String^ ip = httpServer->FindIpAddress();
 	if (ip == nullptr)
@@ -112,14 +115,21 @@ void MainPage::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 	else
 	{
 		Log::Debug("[MainPage] Great success! Hosting at: " + ip);
-	}
+	}*/
 
 	init.InitializeSdk();
 	controller = ref new WebViewController(reader);
-	Windows::Foundation::Uri^ url = ref new Windows::Foundation::Uri("ms-appx-web:///Assets/readium-js/reader.html");
+	Uri^ url = ref new Windows::Foundation::Uri("ms-appx-web:///Assets/readium-js/reader.html");
 	//Windows::Foundation::Uri^ url = ref new Windows::Foundation::Uri("ms-appx-web:///Assets/readium-js/test.html");
 	//url = ref new Windows::Foundation::Uri("http://" + ip + ":8080/reader.html");
-	reader->Navigate(url);
+
+	resolver = ref new ReadiumStreamResolver();
+	url = reader->BuildLocalStreamUri("Readium", "/readium-js/reader.html");
+	reader->NavigateToLocalStreamUri(url, resolver);
+
+	//reader->Navigate(url);
+
+	//copyFile();
 }
 
 /// <summary>
@@ -157,9 +167,35 @@ void ReadiumApp::MainPage::SelectEPubBtn_Click(Platform::Object^ sender, Windows
 			{
 				Log::Debug(copiedFile->Path);
 				Readium::Package^ package = api.openFile(copiedFile);
+				resolver->SetPackage(package);
 				controller->openBook(package);
 			});
 		}
+	});
+
+	
+}
+
+void MainPage::copyFile()
+{
+	using namespace Windows::Storage;
+	using namespace Windows::Data::Json;
+
+	auto folder = Windows::ApplicationModel::Package::Current->InstalledLocation;
+	Log::Debug("[WebViewController] folder: " + folder->Path->ToString());
+	auto reader = std::make_shared<Streams::DataReader^>(nullptr);
+
+	create_task(folder->GetFileAsync("ch01.xhtml"))
+		.then([](StorageFile^ file)
+	{
+		Log::Debug("[WebViewController] file: " + file->Path->ToString());
+		auto folder = Windows::Storage::ApplicationData::Current->LocalFolder;
+		auto opt = Windows::Storage::NameCollisionOption::ReplaceExisting;
+		return file->CopyAsync(folder, file->Name, opt);
+	})
+		.then([reader](StorageFile^ file)
+	{
+		Log::Debug("[MainPage] file copied to: " + file->Path->ToString());
 	});
 }
 

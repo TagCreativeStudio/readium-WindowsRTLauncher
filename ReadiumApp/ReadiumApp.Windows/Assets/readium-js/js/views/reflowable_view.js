@@ -174,15 +174,15 @@ ReadiumSDK.Views.ReflowableView = function(options){
 
             //src = "http://10.0.1.61:8080" + src;
             
-            //_iframeLoader.loadIframe(_$iframe[0], src, onIFrameLoad, self, {spineItem : spineItem});
-            if (window.external) {
-                var json = {
-                    'function': 'onLoadSpineItem',
-                    'src': src
-                };
-                console.log('onLoadSpineItem');
-                window.external.notify(JSON.stringify(json));
-            }
+            _iframeLoader.loadIframe(_$iframe[0], src, onIFrameLoad, self, {spineItem : spineItem});
+            // if (window.external) {
+            //     var json = {
+            //         'function': 'onLoadSpineItem',
+            //         'src': src
+            //     };
+            //     console.log('onLoadSpineItem');
+            //     window.external.notify(JSON.stringify(json));
+            // }
         }
     }
 
@@ -225,7 +225,13 @@ ReadiumSDK.Views.ReflowableView = function(options){
         _$epubHtml = $("html", epubContentDocument);
 
         hideBook();
+        //console.log("adsfasfdsdf");
         _$iframe.css("opacity", "1");
+            // .css('width', '300px')
+            // .css('height', '300px')
+            // .css('background', 'green')
+            // .css('border', '10px solid red');
+            // return;
 
         _$epubHtml.css("height", _lastViewPortSize.height + "px");
         _$epubHtml.css("position", "relative");

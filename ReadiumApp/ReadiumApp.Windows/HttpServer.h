@@ -100,8 +100,8 @@ namespace ReadiumApp
 			writer->UnicodeEncoding = Windows::Storage::Streams::UnicodeEncoding::Utf8;
 
 			// Read the HTTP request
-			Platform::String^ req = StreamReadline(reader);
-			Vector<Platform::String^>^ tokens = StringHelper::Split(req, ' ');
+			/*Platform::String^ req = StreamReadline(reader);
+			Vector<Platform::String^>^ tokens = ReadiumApp::StringHelper::Split(req, ' ');
 			if (tokens->Size != 3)
 			{
 				Log::Debug("[HttpServer] Invalid HTTP request line.");
@@ -109,7 +109,7 @@ namespace ReadiumApp
 			}
 
 			Platform::String^ method = tokens->GetAt(0);
-			Platform::String^ url = tokens->GetAt(1);
+			Platform::String^ url = tokens->GetAt(1);*/
 		}
 
 		Platform::String^ StreamReadline(Reader^ reader)
@@ -160,36 +160,36 @@ namespace ReadiumApp
 			});*/
 
 			Platform::String^ req = StreamReadlineAsync(reader);
-			Vector<Platform::String^>^ tokens = StringHelper::Split(req, ' ');
-			if (tokens->Size != 3)
-			{
-				Log::Debug("[HttpServer] Invalid HTTP request line.");
-				//return nullptr;
-				return;
-			}
+			//Vector<Platform::String^>^ tokens = StringHelper::Split(req, ' ');
+			//if (tokens->Size != 3)
+			//{
+			//	Log::Debug("[HttpServer] Invalid HTTP request line.");
+			//	//return nullptr;
+			//	return;
+			//}
 
-			Platform::String^ method = tokens->GetAt(0);
-			Platform::String^ url = tokens->GetAt(1);
+			//Platform::String^ method = tokens->GetAt(0);
+			//Platform::String^ url = tokens->GetAt(1);
 
-			Log::Debug("[HttpServer] Method: " + method);
-			Log::Debug("[HttpServer] URL: " + url);
+			//Log::Debug("[HttpServer] Method: " + method);
+			//Log::Debug("[HttpServer] URL: " + url);
 
-			Platform::String^ str = ref new Platform::String();
-			str =  "HTTP/1.0 200 OK\n";
-			str += "Content-Type: text/html\n";
-			str += "Connection: close\n";
-			str += "\n";
+			//Platform::String^ str = ref new Platform::String();
+			//str =  "HTTP/1.0 200 OK\n";
+			//str += "Content-Type: text/html\n";
+			//str += "Connection: close\n";
+			//str += "\n";
 
-			str += "<html><head><title>Test</title></head>";
-			str += "<body>";
-			str += "<h1>Hello From HttpServer!</h1>";
-			str += "</body>";
-			str += "</html>";
+			//str += "<html><head><title>Test</title></head>";
+			//str += "<body>";
+			//str += "<h1>Hello From HttpServer!</h1>";
+			//str += "</body>";
+			//str += "</html>";
 
-			Log::Debug("[HttpServer] " + str);
+			//Log::Debug("[HttpServer] " + str);
 
-			writer->WriteString(str);
-			writer->StoreAsync();
+			//writer->WriteString(str);
+			//writer->StoreAsync();
 			//return writer->FlushAsync();
 		}
 
