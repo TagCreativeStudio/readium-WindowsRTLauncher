@@ -1,0 +1,15 @@
+﻿<Application
+    x:Class="Redium_XAML.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Redium_XAML"
+    xmlns:localData="using:Redium_XAML.Data">
+
+    <Application.Resources>
+
+        <!-- Application-specific resources -->
+
+        <x:String x:Key="AppName">Redium_XAML</x:String>
+
+    </Application.Resources>
+</Application>

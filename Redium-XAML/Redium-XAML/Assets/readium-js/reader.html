@@ -1,0 +1,145 @@
+<html>
+    <head>
+        <script src="lib/rangy/rangy-core.js" type="text/javascript"></script>
+        <script src="lib/rangy/rangy-textrange.js" type="text/javascript"></script>
+        <script src="lib/rangy/rangy-highlighter.js" type="text/javascript"></script>
+        <script src="lib/rangy/rangy-cssclassapplier.js" type="text/javascript"></script>
+        <script src="lib/rangy/rangy-position.js" type="text/javascript"></script>
+        <!-- script src="lib/rangy/rangy-serializer.js" type="text/javascript"></script>
+        <script src="lib/rangy/rangy-selectionsaverestore.js" type="text/javascript"></script -->
+        
+        <script src="lib/jquery-1.11.0.js" type="text/javascript"></script>
+        <script src="lib/jquery.sizes.js" type="text/javascript"></script>
+        <script src="lib/underscore.min.js" type="text/javascript"></script>
+        <script src="lib/backbone.min.js" type="text/javascript"></script>
+        <script src="lib/URI.js" type="text/javascript"></script>
+        <script src="lib/annotations_module.js" type="text/javascript"></script>
+        <script src="lib/console_shim.js" type="text/javascript"></script>
+        <script src="js/readium_sdk.js" type="text/javascript"></script>
+        <script src="js/helpers.js" type="text/javascript"></script>
+        <script src="js/models/style.js" type="text/javascript"></script>
+        <script src="js/models/style_collection.js" type="text/javascript"></script>
+        <script src="js/models/trigger.js" type="text/javascript"></script>
+        <script src="js/models/switches.js" type="text/javascript"></script>
+        <script src="js/models/smil_model.js" type="text/javascript"></script>
+        <script src="js/models/media_overlay.js" type="text/javascript"></script>
+        <script src="js/models/viewer_settings.js" type="text/javascript"></script>
+        <script src="js/models/bookmark_data.js" type="text/javascript"></script>
+        <script src="js/models/spine_item.js" type="text/javascript"></script>
+        <script src="js/models/spine.js" type="text/javascript"></script>
+        <script src="js/models/fixed_page_spread.js" type="text/javascript"></script>
+        <script src="js/models/package.js" type="text/javascript"></script>
+        <script src="js/models/current_pages_info.js" type="text/javascript"></script>
+        <script src="js/models/page_open_request.js" type="text/javascript"></script>
+        <script src="js/models/smil_iterator.js" type="text/javascript"></script>
+        <script src="lib/epub_cfi.js" type="text/javascript"></script>
+        <script src="js/views/iframe_loader.js" type="text/javascript"></script>
+        <script src="js/views/internal_links_support.js" type="text/javascript"></script>
+        <script src="js/views/cfi_navigation_logic.js" type="text/javascript"></script>
+        <script src="js/views/reflowable_view.js" type="text/javascript"></script>
+        <script src="js/views/scroll_view.js" type="text/javascript"></script>
+        <script src="js/views/one_page_view.js" type="text/javascript"></script>
+        <script src="js/views/fixed_view.js" type="text/javascript"></script>
+        <script src="js/views/reader_view.js" type="text/javascript"></script>
+        <script src="js/views/media_overlay_element_highlighter.js"></script>
+        <script src="js/views/audio_player.js" type="text/javascript"></script>
+        <script src="js/views/media_overlay_player.js" type="text/javascript"></script>
+        <script src="js/views/media_overlay_data_injector.js" type="text/javascript"></script>
+        <script src="js/views/annotations_manager.js" type="text/javascript"></script>
+        <script src="host_app_feedback.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+
+            var DEBUG = false;
+
+            if (DEBUG) {
+                var oldLog = console.log;
+                console.log = function (msg) {
+                    $('#log').append('[LOG] ' + msg + '\n');
+
+                    oldLog.apply(console, arguments);
+                };
+
+                var oldWarn = console.warn;
+                console.warn = function (msg) {
+                    $('#log').append('[WARN] ' + msg + '\n');
+
+                    oldWarn.apply(console, arguments);
+                };
+
+                var oldErr = console.error;
+                console.error = function (msg) {
+                    $('#log').append('[ERR] ' + msg + '\n');
+
+                    oldErr.apply(console, arguments);
+                };
+
+                var oldDebug = console.debug;
+                console.debug = function (msg) {
+                    $('#log').append('[DBG] ' + msg + '\n');
+
+                    oldDebug.apply(console, arguments);
+                };
+            }
+
+            function ReadiumOpenBook(bookData) {
+                console.log(bookData);
+                ReadiumSDK.reader.openBook(JSON.parse(bookData));
+            }
+
+            function ReadiumLoadSpineItem(json) {
+                 json = JSON.parse(json);
+                 console.log("Contents: " + json.contents);
+                 _$iframe = $("#epubContentIframe");
+                 _$iframe[0].contentWindow.document.write(json.contents);
+                 //_$iframe.css("opacity", "1");
+                 ReadiumSDK.reader.getCurrentView().onIFrameLoad(true);
+                //console.log("Contents (string): " + json);
+            }
+
+            function ReadiumOpenPageLeft() {
+                ReadiumSDK.reader.openPageLeft();
+            }
+
+            function ReadiumOpenPageRight() {
+                ReadiumSDK.reader.openPageRight();
+            }
+
+            $(document).ready(function () {
+                "use strict";
+
+                ReadiumSDK.reader = new ReadiumSDK.Views.ReaderView({el:"#viewport"});
+                ReadiumSDK.trigger(ReadiumSDK.Events.READER_INITIALIZED);
+
+                //$('#test').css('background', 'pink').css('width', '100%').css('height', '90%');
+                //$('#btn').on('click', onBtnClick);
+
+                // $('#viewport').css('height', '80%');
+                $('#log').css('width', '100%').css('height', '20%').css('background', 'red').css("position", "absolute").css("top", "80%");
+
+            });
+
+            //var visible = true;
+            //function onBtnClick(e) {
+            //    window.external.notify('toggle!');
+            //    if (visible === true) {
+            //        $('#test').css('display', 'none');
+            //        $('#viewport').css('background', 'green');
+            //    } else {
+            //        $('#test').css('display', 'block');
+            //    }
+
+            //    visible = !visible;
+            //}
+
+        </script>
+
+        <link rel="stylesheet" type="text/css" href="static/sdk.css" />
+    </head>
+    <body>
+        <!--<div id="test"></div>
+        <button id="btn">Toggle</button>-->
+        <div id="viewport"></div>
+        <!-- <textarea id="log"></textarea> -->
+     </body>
+</html>
