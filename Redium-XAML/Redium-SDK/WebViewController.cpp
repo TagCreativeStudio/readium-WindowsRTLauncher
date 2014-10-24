@@ -80,8 +80,10 @@ void WebViewController::openPackage(Readium::Package^ package)
 
 void WebViewController::openBook(Readium::Package^ bookPackage)
 {
-	/*EPubOpenPageRequest^ req = EPubOpenPageRequest::fromContentUrl("", "chapter_001.xhtml");*/
-	EPubOpenPageRequest^ req = EPubOpenPageRequest::fromContentUrl("pr01.xhtml", "pr01.xhtml");
+	Readium::SpineItem^ spineItem = bookPackage->SpineItemAt(2);
+	Platform::String^ firstPageHref = spineItem->ManifestItemRef->BaseHref;
+
+	EPubOpenPageRequest^ req = EPubOpenPageRequest::fromContentUrl(firstPageHref, firstPageHref);
 	EPubViewerSettings^ view = ref new EPubViewerSettings(true, 100, 20);
 	JsonObject^ json = EPubSdkApi::openBook(bookPackage, view, req);
 
