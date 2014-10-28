@@ -48,10 +48,14 @@ IAsyncOperation<IInputStream^>^ ReadiumStreamResolver::UriToStreamAsync(Windows:
 		// Load from Assets/ folder
 		if (split->Size == 1)
 		{
+			Uri^ appDataUriTest = ref new Uri(L"ms-appx:///Assets/readium-js/empty.html");
+			return GetFileStreamFromApplicationUriAsync(appDataUriTest);
+			/*
 			return create_async([]()->IInputStream^
 			{
 				return nullptr;
 			});
+			*/
 		}
 		else
 		{
@@ -60,11 +64,99 @@ IAsyncOperation<IInputStream^>^ ReadiumStreamResolver::UriToStreamAsync(Windows:
 	}
 	else
 	{
+
+		
 		// Load from ePub document
 		return create_async([this, relativePath]()->IInputStream^
 		{
-			return this->package->ReadStreamForRelativePath(StringHelper::TrimLeadingSlash(relativePath));
-			//return this->package->ReadStreamForItemAtPath("/EPUB/" + relativePath);
+			auto wFileName = StringHelper::PlatformToStd(relativePath);
+			std::replace(wFileName.begin(), wFileName.end(), '/', '-');
+			String^ longFileName = StringHelper::StdToPlatform(wFileName);
+			Readium::IClosableStream^ stream = this->package->ReadStreamForRelativePath(StringHelper::TrimLeadingSlash(relativePath));
+			auto read_size = stream->Size;
+
+			auto reader = ref new DataReader(stream);
+			StorageFolder^ item = ApplicationData::Current->LocalFolder;
+
+			/***
+			//create our file
+			auto fileCreationTask = item->CreateFileAsync(longFileName, Windows::Storage::CreationCollisionOption::ReplaceExisting);
+			fileCreationTask->Completed = ref new AsyncOperationCompletedHandler<StorageFile^>
+				([=](IAsyncOperation<StorageFile^>^ operation, AsyncStatus status)
+			{
+				StorageFile^ myNewFile = operation->GetResults();
+
+				// open the new file
+				auto openMyFileOperation = myNewFile->OpenAsync(Windows::Storage::FileAccessMode::ReadWrite);
+				openMyFileOperation->Completed = ref new AsyncOperationCompletedHandler<IRandomAccessStream^>
+					([=](IAsyncOperation<IRandomAccessStream^>^ operation, AsyncStatus status)
+				{
+					auto myRandomAccessStream = operation->GetResults();
+
+					// read from our inputstream
+					auto loadOperation = reader->LoadAsync(read_size);
+
+					loadOperation->Completed = ref new AsyncOperationCompletedHandler<unsigned int>
+						([=](IAsyncOperation<unsigned int>^ operation, AsyncStatus status)
+					{
+						IBuffer^ myBuffer = reader->ReadBuffer(read_size);
+
+						create_task(FileIO::WriteBufferAsync(myNewFile, myBuffer)).then([=](task<void> task)
+						{
+							try{
+								task.get();
+
+								auto openCacheFileOperation = myNewFile->OpenReadAsync();
+								openCacheFileOperation->Completed = ref new AsyncOperationCompletedHandler<IRandomAccessStreamWithContentType^>
+									([=](IAsyncOperation<IRandomAccessStreamWithContentType^>^ operation, AsyncStatus status)
+								{
+									auto ras = operation->GetResults();
+									return ras->GetInputStreamAt(0);
+								});
+							}
+							catch (COMException^ ex) {
+								//handle exception raised during file write
+							}
+						});
+						
+
+						//auto writeAction = FileIO::WriteBufferAsync(myNewFile, myBuffer);
+					});
+				});
+			});
+			***/
+
+			task<StorageFile^> createFileTask(item->CreateFileAsync(longFileName, Windows::Storage::CreationCollisionOption::ReplaceExisting));
+
+			createFileTask.wait();
+
+			StorageFile^ storageFile = createFileTask.get();
+			task<IRandomAccessStream^> openFileTask(storageFile->OpenAsync(Windows::Storage::FileAccessMode::ReadWrite));
+
+			openFileTask.wait();
+
+			IRandomAccessStream^ writeStream = openFileTask.get();
+			task<unsigned int> readStreamTask(reader->LoadAsync(read_size));
+
+			readStreamTask.wait();
+
+			// TODO: error checking
+			unsigned int readBytes = readStreamTask.get();
+			Log::Debug("[ReadiumStreamResolver] read from stream: " + readBytes + " of " + read_size + " bytes ");
+
+			IBuffer^ contentBuffer = reader->DetachBuffer();
+			InMemoryRandomAccessStream^ memoryStream = ref new InMemoryRandomAccessStream();
+			DataWriter^ dataWriter = ref new DataWriter(memoryStream->GetOutputStreamAt(0));
+			dataWriter->WriteBuffer(contentBuffer);
+			task<unsigned int> storeTask(dataWriter->StoreAsync());
+
+			unsigned int wroteBytes = storeTask.get();
+			Log::Debug("[ReadiumStreamResolver] wrote to memoryStream: " + wroteBytes + " of " + readBytes + " bytes ");
+
+			storeTask.wait();
+			return memoryStream->GetInputStreamAt(0);
+
+			//return this->package->ReadStreamForRelativePath(StringHelper::TrimLeadingSlash(relativePath));
 		});
 	}
 }
@@ -100,3 +192,4 @@ IAsyncOperation<IInputStream^>^ ReadiumStreamResolver::GetFileStreamFromApplicat
 		return getInputStreamTask.get();
 	});
 }
+

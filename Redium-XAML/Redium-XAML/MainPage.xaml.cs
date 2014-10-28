@@ -146,6 +146,7 @@ namespace Redium_XAML
                 resolver.SetPackage(package);
                 controller.openBook(package);
 
+                Debug.WriteLine("[MainPage] File selected and coped to: " + copiedFile.Path);
             }
         }
 
