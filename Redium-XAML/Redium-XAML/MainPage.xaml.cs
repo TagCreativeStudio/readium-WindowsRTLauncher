@@ -76,7 +76,7 @@ namespace Redium_XAML
             init.InitializeSdk();
             controller = new WebViewController(reader);
             Uri url = new Uri("ms-appx-web:///Assets/readium-js/reader.html");
-            resolver = new ReadiumStreamResolver();
+            resolver = new WebViewStreamResolver();
             url = reader.BuildLocalStreamUri("Redium", "/readium-js/reader.html");
             reader.NavigateToLocalStreamUri(url, resolver);
         }
@@ -118,7 +118,7 @@ namespace Redium_XAML
 
         private string mruToken;
         private EPubSdkApi api = new EPubSdkApi();
-        private ReadiumStreamResolver resolver;
+        private WebViewStreamResolver resolver;
         private WebViewController controller;
         private Initialization init;
         
@@ -143,9 +143,10 @@ namespace Redium_XAML
                 var copiedFile = await file.CopyAsync(folder, file.Name, opt);
 
                 var package = api.openFile(copiedFile);
-                resolver.SetPackage(package);
+                resolver.package = package;
                 controller.openBook(package);
 
+                Debug.WriteLine("[MainPage] File selected and coped to: " + copiedFile.Path);
             }
         }
 

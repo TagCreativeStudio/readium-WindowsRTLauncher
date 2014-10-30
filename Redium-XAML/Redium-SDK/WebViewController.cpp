@@ -25,7 +25,7 @@ WebViewController::WebViewController(Windows::UI::Xaml::Controls::WebView^ view)
 
 	JsHandler^ onLoadSpineItem = ref new JsHandler([this](Windows::Data::Json::JsonObject^ json)
 	{
-		Log::Debug("[WebViewController] onLoadSpineItem");
+		Log::Debug("[WebViewController] onLoadSpineItem : " + json->Stringify());
 		
 		using namespace Windows::Storage;
 		using namespace Windows::Data::Json;
