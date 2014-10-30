@@ -60,7 +60,15 @@ Windows::Data::Json::JsonObject^ EPubSdkApi::packageToJson(Readium::Package^ pac
 	JsonObject^ json = ref new JsonObject();
 
 	json->Insert("rootUrl", JsonValue::CreateStringValue("/"));
-	json->Insert("rendition_layout", JsonValue::CreateStringValue(""));
+
+	Readium::Property^ layoutProperty = package->PropertyMatching("rendition", "layout");
+
+	if (layoutProperty != nullptr) {
+		json->Insert("rendition_layout", JsonValue::CreateStringValue(layoutProperty->Value));
+	}
+	else {
+		json->Insert("rendition_layout", JsonValue::CreateStringValue(""));
+	}
 	json->Insert("rendition_flow", JsonValue::CreateStringValue(""));
 
 	JsonObject^ spine = ref new JsonObject();
