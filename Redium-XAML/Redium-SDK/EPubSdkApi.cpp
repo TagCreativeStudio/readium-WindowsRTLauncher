@@ -207,11 +207,8 @@ Windows::Data::Json::JsonArray^ EPubSdkApi::SMILSequenceToJson(Readium::ISMILSeq
 }
 
 Windows::Data::Json::IJsonValue^ EPubSdkApi::SMILTimeContainerToJson(Readium::ISMILTimeContainer^ container) {
-	if (container == nullptr) {
-		Log::Debug("[EPubSdkApi] #SMILTimeContainerToJson : given container is null");
-	}
 	if (container->IsSequence) {
-		auto seq = container->toParallel();
+		auto seq = static_cast<ISMILSequence^>(container);
 		return SMILSequenceToJson(seq);
 	}
 
