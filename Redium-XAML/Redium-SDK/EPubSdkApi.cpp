@@ -150,8 +150,9 @@ Windows::Data::Json::JsonObject^ EPubSdkApi::packageToJson(Readium::Package^ pac
 			model->Insert("smilVersion", JsonValue::CreateStringValue("3.0"));
 
 			Readium::ISMILSequence^ seqBody = currSmil->Body;
-			//JsonArray^ arrChildren = getJson(seqBody);
-			//model->Insert("children", arrChildren);
+
+			JsonArray^ arrChildren = SMILSequenceToJson(seqBody);
+			model->Insert("children", arrChildren);
 
 			smilModels->Append(model);
 		}
@@ -187,4 +188,89 @@ Windows::Data::Json::JsonObject^ EPubSdkApi::packageToJson(Readium::Package^ pac
 	json->Insert("media_overlay", mediaOverlay);
 
 	return json;
+}
+
+Windows::Data::Json::JsonArray^ EPubSdkApi::SMILSequenceToJson(Readium::ISMILSequence^ sequence)
+{
+	JsonArray^ ret = ref new JsonArray();
+
+	if (sequence == nullptr) {
+		Log::Debug("[EPubSdkApi] #SMILSequenceToJson : given sequence is null");
+		return ret;
+	}
+
+	for (int i = 0; i < sequence->ChildCount; i++) {
+		ret->Append(SMILTimeContainerToJson(sequence->ChildAt(i)));
+	}
+
+	return ret;
+}
+
+Windows::Data::Json::IJsonValue^ EPubSdkApi::SMILTimeContainerToJson(Readium::ISMILTimeContainer^ container) {
+	if (container == nullptr) {
+		Log::Debug("[EPubSdkApi] #SMILTimeContainerToJson : given container is null");
+	}
+	if (container->IsSequence) {
+		auto seq = container->toParallel();
+		return SMILSequenceToJson(seq);
+	}
+
+	else if (container->IsParallel) {
+		ISMILParallel^ par = static_cast<ISMILParallel^>(container);
+		return SMILParallelToJson(par);
+	}
+
+	else {
+		Log::Debug("[EPubSdkApi] container is neither a sequence nor parallel");
+		return nullptr;
+	}
+}
+
+Windows::Data::Json::IJsonValue^ EPubSdkApi::SMILParallelToJson(Readium::ISMILParallel^ par) {
+	JsonObject^ ret = ref new JsonObject();
+	if (par == nullptr) {
+		Log::Debug("[EPubSdkApi] #SMILParallelToJson : par is null"); 
+		return ret;
+	}
+	ret->SetNamedValue("epubtype", JsonValue::CreateStringValue(par->Type));
+	ret->SetNamedValue("nodeType", JsonValue::CreateStringValue(par->Name));
+
+	JsonArray^ children = ref new JsonArray();
+	if (par->Text != nullptr) {
+		children->Append(SMILParTextToJson(par->Text));
+	}
+
+	if (par->Audio != nullptr) {
+		children->Append(SMILParAudioToJson(par->Audio));
+	}
+	if (children->Size > 0) {
+		ret->SetNamedValue("children", children);
+	}
+	return ret;
+}
+
+Windows::Data::Json::JsonObject^ EPubSdkApi::SMILParTextToJson(Readium::ISMILText^ text) {
+	JsonObject^ ret = ref new JsonObject();
+
+	auto srcFragmentId = text->SrcFragmentID;
+	auto srcFile = text->SrcFile;
+
+	ret->SetNamedValue("nodeType", JsonValue::CreateStringValue("text"));
+	ret->SetNamedValue("srcFile", JsonValue::CreateStringValue(srcFile));
+	ret->SetNamedValue("srcFragmentId", JsonValue::CreateStringValue(srcFragmentId));
+
+	if (srcFragmentId->IsEmpty()) {
+		ret->SetNamedValue("src", JsonValue::CreateStringValue(srcFile));
+	}
+	else {
+		ret->SetNamedValue("src", JsonValue::CreateStringValue(srcFile + "#" + srcFragmentId));
+	}
+
+	return ret;
+}
+
+Windows::Data::Json::JsonObject^ EPubSdkApi::SMILParAudioToJson(Readium::ISMILAudio^ audio) {
+	JsonObject^ ret = ref new JsonObject();
+
+	return ret;
 }

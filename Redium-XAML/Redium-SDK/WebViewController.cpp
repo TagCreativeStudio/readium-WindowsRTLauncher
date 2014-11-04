@@ -62,6 +62,8 @@ void WebViewController::openPackage(Readium::Package^ package)
 	JsonObject^ json = EPubSdkApi::packageToJson(package);
 	Platform::String^ jsonString = json->Stringify();
 
+	Log::Debug("[WebViewController] epub json: " + jsonString);
+
 	auto args = ref new Platform::Collections::Vector<Platform::String^>();
 	args->Append(jsonString);
 
@@ -80,7 +82,7 @@ void WebViewController::openPackage(Readium::Package^ package)
 
 void WebViewController::openBook(Readium::Package^ bookPackage)
 {
-	Readium::SpineItem^ spineItem = bookPackage->SpineItemAt(2);
+	Readium::SpineItem^ spineItem = bookPackage->SpineItemAt(0);
 	Platform::String^ firstPageHref = spineItem->ManifestItemRef->BaseHref;
 
 	EPubOpenPageRequest^ req = EPubOpenPageRequest::fromContentUrl(firstPageHref, firstPageHref);
@@ -88,6 +90,8 @@ void WebViewController::openBook(Readium::Package^ bookPackage)
 	JsonObject^ json = EPubSdkApi::openBook(bookPackage, view, req);
 
 	Platform::String^ jsonString = json->Stringify();
+
+	Log::Debug("[WebViewController] epub json: " + jsonString);
 
 	auto args = ref new Platform::Collections::Vector<Platform::String^>();
 	args->Append(jsonString);
