@@ -196,3 +196,5 @@ ReadiumApp/ReadiumApp.Windows/BundleArtifacts/
 !ReadiumApp/ReadiumApp.Windows/Prebuilt/Lib/x86
 !Redium-XAML/Redium-SDK/Readium/Win32/Debug
 !Redium-XAML/Redium-SDK/Readium/Win32/Release
+
+Redium-XAML/Redium-SDK/Readium/
