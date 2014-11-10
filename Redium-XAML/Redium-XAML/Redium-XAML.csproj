@@ -170,7 +170,6 @@
     <Content Include="Assets\readium-js\lib\console_shim.js" />
     <Content Include="Assets\readium-js\lib\epub_cfi.js" />
     <Content Include="Assets\readium-js\lib\jquery-1.11.0.js" />
-    <Content Include="Assets\readium-js\lib\jquery-2.1.1.js" />
     <Content Include="Assets\readium-js\lib\jquery.sizes.js" />
     <Content Include="Assets\readium-js\lib\rangy\rangy-core.js" />
     <Content Include="Assets\readium-js\lib\rangy\rangy-cssclassapplier.js" />
