@@ -12,18 +12,25 @@ This is a Windows Store test app that exists to determine if/how we can get Read
 
 ## Dependencies
 
-- [Readium SDK](https://bitbucket.org/tagdevelopers/readium-sdk), use the `win8` branch.
+- [Readium SDK](https://github.com/TagCreativeStudio/readium-sdk), use the `win8` branch.
 - Visual Studio 2013.
 - Windows 8.1 SDK.
 - Patience.
 
 ## Linking to the Readium SDK
 
+There are to ways to link to the Readium SDK: a direct reference to the `.winmd` file, or using the system-installed version of the SDK (after running the VSIX installer).
 The `.winmd` files (basically you can think of these as DLLs for WinRT) for both Release and Debug builds are in this repo in the `ReadiumApp\ReadiumApp.Windows\Readium` folder. 
+
+### Linking directly to .winmd file
 
 As we're linking the `.winmd` files rather than including the Readium SDK project in the app solution you _must_ change the `.winmd` reference to the proper build type (i.e., if you're making a Release build you must link to the Release version of the `.winmd`).
 
 Change which `.winmd` file is being referenced by right-clicking the __ReadiumApp.Window__ project in the Solution Explorer then selecting __Properties...__. In the left-hand pane select __References__ under __Common Properties__, then click the __Add New Reference...__ button to link to the correct `.winmd` file as described earlier.
+
+### Linking to VSIX SDK
+
+Go to __Add New Reference...__ as above, but select` Windows 8.1 > Extensions > Readium SDK` instead of selecting the `.winmd` file directly.
 
 ## Passing Cert
 

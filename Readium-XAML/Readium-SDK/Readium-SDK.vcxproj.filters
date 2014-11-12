@@ -9,7 +9,6 @@
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="EPubSdkApi.cpp" />
-    <ClCompile Include="ReadiumStreamResolver.cpp" />
     <ClCompile Include="WebViewController.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -18,9 +17,6 @@
     <ClInclude Include="EPubViewerSettings.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="EPubOpenPageRequest.h" />
-    <ClInclude Include="HttpServer.h" />
-    <ClInclude Include="ReadiumStreamResolver.h" />
-    <ClInclude Include="StringHelper.h" />
     <ClInclude Include="WebViewController.h" />
   </ItemGroup>
 </Project>
