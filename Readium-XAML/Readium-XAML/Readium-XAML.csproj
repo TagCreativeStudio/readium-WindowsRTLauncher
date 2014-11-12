@@ -110,7 +110,6 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DataModel\SampleDataSource.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\RelayCommand.cs" />
@@ -180,7 +179,6 @@
     <Content Include="Assets\readium-js\SplashScreen.scale-100.png" />
     <Content Include="Assets\readium-js\static\sdk.css" />
     <Content Include="Assets\readium-js\StoreLogo.scale-100.png" />
-    <Content Include="DataModel\SampleData.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Logo.scale-100.png" />

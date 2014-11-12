@@ -107,7 +107,7 @@ void WebViewController::openBook(Readium::Package^ bookPackage)
 
 void WebViewController::onScriptNotify(Platform::Object^ sender, Windows::UI::Xaml::Controls::NotifyEventArgs^ e)
 {
-	Log::Debug("[WebViewController] onScriptNotify");
+	Log::Debug("[WebViewController] onScriptNotify ");
 	Platform::String^ val = e->Value;
 	Log::Debug(val);
 	JsonValue^ jsonVal;

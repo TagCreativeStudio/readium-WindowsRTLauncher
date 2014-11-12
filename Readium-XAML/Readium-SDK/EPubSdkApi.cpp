@@ -150,6 +150,8 @@ Windows::Data::Json::JsonObject^ EPubSdkApi::packageToJson(Readium::Package^ pac
 			model->Insert("smilVersion", JsonValue::CreateStringValue("3.0"));
 
 			Readium::ISMILSequence^ seqBody = currSmil->Body;
+
+			// TODO: implement serializing seqBody to json
 			//JsonArray^ arrChildren = getJson(seqBody);
 			//model->Insert("children", arrChildren);
 
