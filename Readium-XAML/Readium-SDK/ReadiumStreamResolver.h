@@ -3,7 +3,7 @@
 
 #include "pch.h"
 
-namespace Redium_SDK
+namespace Readium_SDK
 {
 	public ref class ReadiumStreamResolver sealed : public Windows::Web::IUriToStreamResolver
 	{

@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Media.Imaging;
 // responsiveness by initiating the data loading task in the code behind for App.xaml when the app 
 // is first launched.
 
-namespace Redium_XAML.Data
+namespace Readium_XAML.Data
 {
     /// <summary>
     /// Generic item data model.

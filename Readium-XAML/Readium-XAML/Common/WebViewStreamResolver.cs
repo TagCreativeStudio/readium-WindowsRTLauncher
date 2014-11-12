@@ -10,7 +10,7 @@ using Windows.Web;
 using Windows.Foundation;
 using Windows.Storage;
 
-namespace Redium_XAML.Common
+namespace Readium_XAML.Common
 {
     class WebViewStreamResolver : IUriToStreamResolver
     {

@@ -5,7 +5,7 @@
 
 #include "Log.h"
 
-using namespace Redium_SDK;
+using namespace Readium_SDK;
 
 using namespace Platform;
 using namespace Windows::Foundation;

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Redium_XAML.Common
+namespace Readium_XAML.Common
 {
     /// <summary>
     /// A command whose sole purpose is to relay its functionality 

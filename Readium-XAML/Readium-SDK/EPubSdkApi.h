@@ -10,7 +10,7 @@
 #include "EPubViewerSettings.h"
 #include "Log.h"
 
-namespace Redium_SDK
+namespace Readium_SDK
 {
 	[Windows::Foundation::Metadata::WebHostHidden]
 	public ref class EPubSdkApi sealed

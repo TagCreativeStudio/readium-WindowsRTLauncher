@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redium-XAML", "Redium-XAML\Redium-XAML.csproj", "{D94A1AB6-131A-4016-9994-DA667526D902}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Readium-XAML", "Readium-XAML\Readium-XAML.csproj", "{D94A1AB6-131A-4016-9994-DA667526D902}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Redium-SDK", "Redium-SDK\Redium-SDK.vcxproj", "{86B6A7F5-C6F6-46B9-92B9-6C2382B69FD1}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Readium-SDK", "Readium-SDK\Readium-SDK.vcxproj", "{86B6A7F5-C6F6-46B9-92B9-6C2382B69FD1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,7 +4,7 @@
 #include <string>
 #include <sstream>
 
-namespace Redium_SDK
+namespace Readium_SDK
 {
 	public ref class Log sealed
 	{

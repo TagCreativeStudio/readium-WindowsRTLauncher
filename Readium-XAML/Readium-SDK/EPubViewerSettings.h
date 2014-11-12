@@ -1,7 +1,7 @@
 #ifndef VIEWERSETTINGS_H
 #define VIEWERSETTINGS_H
 
-namespace Redium_SDK
+namespace Readium_SDK
 {
 	[Windows::Foundation::Metadata::WebHostHidden]
 	public ref class EPubViewerSettings sealed

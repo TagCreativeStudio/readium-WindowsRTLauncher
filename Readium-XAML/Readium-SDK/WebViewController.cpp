@@ -3,7 +3,7 @@
 
 #include "EPubSdkApi.h"
 
-using namespace Redium_SDK;
+using namespace Readium_SDK;
 using namespace Readium;
 
 using namespace Windows::Data::Json;
@@ -80,7 +80,7 @@ void WebViewController::openPackage(Readium::Package^ package)
 
 void WebViewController::openBook(Readium::Package^ bookPackage)
 {
-	Readium::SpineItem^ spineItem = bookPackage->SpineItemAt(2);
+	Readium::SpineItem^ spineItem = bookPackage->SpineItemAt(0);
 	Platform::String^ firstPageHref = spineItem->ManifestItemRef->BaseHref;
 
 	EPubOpenPageRequest^ req = EPubOpenPageRequest::fromContentUrl(firstPageHref, firstPageHref);

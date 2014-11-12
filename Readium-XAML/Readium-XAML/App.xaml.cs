@@ -1,4 +1,4 @@
-﻿using Redium_XAML.Common;
+﻿using Readium_XAML.Common;
 
 using System;
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Grid App template is documented at http://go.microsoft.com/fwlink/?LinkId=234226
 
-namespace Redium_XAML
+namespace Readium_XAML
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

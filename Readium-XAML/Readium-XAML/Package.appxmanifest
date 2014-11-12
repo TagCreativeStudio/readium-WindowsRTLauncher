@@ -6,7 +6,7 @@
             Version="1.0.0.0" />
 
   <Properties>
-    <DisplayName>Redium-XAML</DisplayName>
+    <DisplayName>Readium-XAML</DisplayName>
     <PublisherDisplayName>Jason</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -23,12 +23,12 @@
   <Applications>
     <Application Id="App"
         Executable="$targetnametoken$.exe"
-        EntryPoint="Redium_XAML.App">
+        EntryPoint="Readium_XAML.App">
         <m2:VisualElements
-            DisplayName="Redium-XAML"
+            DisplayName="Readium-XAML"
             Square150x150Logo="Assets\Logo.png"
             Square30x30Logo="Assets\SmallLogo.png"
-            Description="Redium-XAML"
+            Description="Readium-XAML"
             ForegroundText="light"
             BackgroundColor="#464646">
             <m2:SplashScreen Image="Assets\SplashScreen.png" />

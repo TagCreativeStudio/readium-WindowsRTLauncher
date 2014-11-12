@@ -4,7 +4,7 @@
 #include "EPubOpenPageRequest.h"
 #include "EPubViewerSettings.h"
 
-namespace Redium_SDK
+namespace Readium_SDK
 {
 	[Windows::Foundation::Metadata::WebHostHidden]
 	public ref class WebViewController sealed

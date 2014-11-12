@@ -6,7 +6,7 @@
 #include "Log.h"
 #include "StringHelper.h"
 
-namespace Redium_SDK
+namespace Readium_SDK
 {
 	public ref class HttpServer sealed
 	{

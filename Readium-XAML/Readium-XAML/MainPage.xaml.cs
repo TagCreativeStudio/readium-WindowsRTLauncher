@@ -1,6 +1,6 @@
 ﻿using Readium;
-using Redium_SDK;
-using Redium_XAML.Common;
+using Readium_SDK;
+using Readium_XAML.Common;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -22,7 +22,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
-namespace Redium_XAML
+namespace Readium_XAML
 {
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
@@ -77,7 +77,7 @@ namespace Redium_XAML
             controller = new WebViewController(reader);
             Uri url = new Uri("ms-appx-web:///Assets/readium-js/reader.html");
             resolver = new WebViewStreamResolver();
-            url = reader.BuildLocalStreamUri("Redium", "/readium-js/reader.html");
+            url = reader.BuildLocalStreamUri("Readium", "/readium-js/reader.html");
             reader.NavigateToLocalStreamUri(url, resolver);
         }
 
@@ -144,6 +144,7 @@ namespace Redium_XAML
 
                 var package = api.openFile(copiedFile);
                 resolver.package = package;
+
                 controller.openBook(package);
 
                 Debug.WriteLine("[MainPage] File selected and coped to: " + copiedFile.Path);

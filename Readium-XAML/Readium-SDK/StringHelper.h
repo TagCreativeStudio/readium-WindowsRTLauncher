@@ -8,7 +8,7 @@
 
 #include "HttpServer.h"
 
-namespace Redium_SDK
+namespace Readium_SDK
 {
 
 	class StringHelper sealed

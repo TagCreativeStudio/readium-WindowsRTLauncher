@@ -190,9 +190,11 @@ FakesAssemblies/
 
 ReadiumApp/ReadiumApp.Windows/BundleArtifacts/
 
-!ReadiumApp/ReadiumApp.Windows/Readium/Win32/Debug
-!ReadiumApp/ReadiumApp.Windows/Readium/Win32/Release
-!ReadiumApp/ReadiumApp.Windows/Prebuilt/Lib/x64
-!ReadiumApp/ReadiumApp.Windows/Prebuilt/Lib/x86
-!Redium-XAML/Redium-SDK/Readium/Win32/Debug
-!Redium-XAML/Redium-SDK/Readium/Win32/Release
+Readium-XAML/Readium-SDK/Readium
+
+#!ReadiumApp/ReadiumApp.Windows/Readium/Win32/Debug
+#!ReadiumApp/ReadiumApp.Windows/Readium/Win32/Release
+#!ReadiumApp/ReadiumApp.Windows/Prebuilt/Lib/x64
+#!ReadiumApp/ReadiumApp.Windows/Prebuilt/Lib/x86
+#!Readium-XAML/Readium-SDK/Readium/Win32/Debug
+#!Readium-XAML/Readium-SDK/Readium/Win32/Release

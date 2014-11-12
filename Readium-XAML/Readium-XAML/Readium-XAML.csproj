@@ -7,14 +7,14 @@
     <ProjectGuid>{D94A1AB6-131A-4016-9994-DA667526D902}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Redium_XAML</RootNamespace>
-    <AssemblyName>Redium-XAML</AssemblyName>
+    <RootNamespace>Readium_XAML</RootNamespace>
+    <AssemblyName>Readium-XAML</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>Redium-XAML_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>Readium-XAML_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -102,13 +102,6 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <ProjectReference Include="..\Redium-SDK\Redium-SDK.vcxproj">
-      <Project>{86b6a7f5-c6f6-46b9-92b9-6c2382b69fd1}</Project>
-      <Name>Redium-SDK</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -131,7 +124,6 @@
     <None Include="Assets\pr01.xhtml" />
     <None Include="Assets\readium-js\ch01.xhtml" />
     <None Include="Common\ReadMe.txt" />
-    <None Include="Redium-XAML_TemporaryKey.pfx" />
     <Content Include="Assets\readium-js\host_app_feedback.js" />
     <Content Include="Assets\readium-js\host_app_reference_files\sample_styles.css" />
     <Content Include="Assets\readium-js\js\helpers.js" />
@@ -216,9 +208,16 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Readium">
-      <HintPath>..\Redium-SDK\Readium\Win32\Debug\Readium.winmd</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Readium-SDK\Readium-SDK.vcxproj">
+      <Project>{86b6a7f5-c6f6-46b9-92b9-6c2382b69fd1}</Project>
+      <Name>Readium-SDK</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="VSIXReadium, Version=1.0">
+      <Name>Readium SDK</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
