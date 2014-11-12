@@ -20,7 +20,6 @@ This is a Windows Store test app that exists to determine if/how we can get Read
 ## Linking to the Readium SDK
 
 There are to ways to link to the Readium SDK: a direct reference to the `.winmd` file, or using the system-installed version of the SDK (after running the VSIX installer).
-The `.winmd` files (basically you can think of these as DLLs for WinRT) for both Release and Debug builds are in this repo in the `ReadiumApp\ReadiumApp.Windows\Readium` folder. 
 
 ### Linking directly to .winmd file
 
