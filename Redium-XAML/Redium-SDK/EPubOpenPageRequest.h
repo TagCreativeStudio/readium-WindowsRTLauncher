@@ -3,6 +3,7 @@
 
 namespace Redium_SDK
 {
+	[Windows::Foundation::Metadata::WebHostHidden]
 	public ref class EPubOpenPageRequest sealed
 	{
 	public:

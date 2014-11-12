@@ -12,6 +12,7 @@
 
 namespace Redium_SDK
 {
+	[Windows::Foundation::Metadata::WebHostHidden]
 	public ref class EPubSdkApi sealed
 	{
 	public:
